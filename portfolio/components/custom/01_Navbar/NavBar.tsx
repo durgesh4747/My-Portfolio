@@ -5,7 +5,6 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiLink, FiFolder, FiUser, FiHome } from "react-icons/fi";
 import { Menu, X } from "lucide-react";
-import { BiLayerPlus } from "react-icons/bi";
 
 interface NavLinkProps {
   href: string;
@@ -14,13 +13,13 @@ interface NavLinkProps {
   icon: React.ReactNode; // Added icon prop
 }
 
-export default function NavigationBar() {
+export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "work", "about", "contact"];
+      const sections = ["home", "vault", "about", "contact"];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -38,8 +37,8 @@ export default function NavigationBar() {
 
   const navLinks = [
     { href: "#home", label: "Home", icon: <FiHome /> },
-    { href: "#work", label: "Work", icon: <FiFolder /> },
-    { href: "#about", label: "About", icon: <BiLayerPlus /> },
+    { href: "#vault", label: "Vault", icon: <FiFolder /> },
+    { href: "#about", label: "About", icon: <FiUser /> },
   ];
 
   return (
