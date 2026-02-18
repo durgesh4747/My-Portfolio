@@ -7,6 +7,7 @@ import {
   FiMapPin,
 } from "react-icons/fi";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function About() {
   // Animation variants for staggered entrance
@@ -26,7 +27,7 @@ export default function About() {
       transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
     },
   };
-
+  const [isClicked,setIsClicked]=useState(false);
   return (
     <section
       id="about"
@@ -49,14 +50,15 @@ export default function About() {
           {/* LAYER A: The Photo "Hardware" */}
           <motion.div
             variants={itemVariants}
-            className="relative z-10 h-[450px] w-full rounded-[3rem] overflow-hidden border-2 border-slate-800/80 bg-slate-950 group"
+            onClick={() => setIsClicked(!isClicked)}
+            className=" relative z-10 h-[450px] w-full rounded-[3rem] overflow-hidden border-2 border-slate-800/80 bg-slate-950 group" 
           >
             <Image
               // REPLACE WITH YOUR PHOTO
               src="https://images.pexels.com/photos/35031430/pexels-photo-35031430.jpeg"
               alt="Aditya - System Architect"
               fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+              className={`${isClicked?`grayscale-0`:`grayscale`} object-cover group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`}
             />
           </motion.div>
 
