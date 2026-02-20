@@ -123,7 +123,7 @@ export default function About() {
             className="text-5xl md:text-6xl font-bold text-white mb-8 leading-none tracking-tight"
           >
             Engineering logic, <br /> not just{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-white">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-slate-500 to-white">
               writing code.
             </span>
           </motion.h2>
