@@ -4,7 +4,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="w-full max-w-6xl mx-auto px-4 py-20 mb-20">
       {/* HEADER */}
-      <div className="mb-16 max-w-3xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center">
         <h2 className="text-cyan-500 font-mono text-xs tracking-[0.3em] uppercase mb-4">
           Let&apos;s Build Something Amazing
         </h2>
