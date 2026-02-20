@@ -13,7 +13,7 @@ const initialState: ContactFormState = {
 
 export default function ContactForm() {
   const [currency, setCurrency] = useState("INR");
-  const [budgetValue, setBudgetValue] = useState("");
+  const [budgetValue, setBudgetValue] = useState<string | null>(null);
   const [state, formAction, isPending] = useActionState(
     sendEmail,
     initialState,
@@ -29,7 +29,7 @@ export default function ContactForm() {
       toast.success("Message sent! I'll get back to you soon.");
 
       setTimeout(() => {
-        setBudgetValue("");
+        setBudgetValue(null);
         setCurrency("INR");
         document.querySelector("form")?.reset();
       }, 0);
@@ -264,7 +264,7 @@ export default function ContactForm() {
                       type="text"
                       name="budget"
                       value={
-                        budgetValue ||
+                        budgetValue ??
                         (state.data?.budget
                           ? formatCommas(state.data.budget)
                           : "")

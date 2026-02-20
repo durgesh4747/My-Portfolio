@@ -1,66 +1,99 @@
 "use client";
 
-import { Monitor, Cpu, Database } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 
 export default function Services() {
+  // Keeping your exact About section animation physics
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const services = [
+    {
+      title: "High-Performance Websites",
+      desc: "For brands that need to stand out. I build lightning-fast, visually striking websites with smooth animations. Using Next.js, I ensure your site looks premium, ranks high on Google, and loads instantly on every device.",
+    },
+    {
+      title: "Custom Web Applications",
+      desc: "For businesses that need complex logic. If you need more than a static page, I engineer interactive software like SaaS dashboards, client portals, and custom tools—complete with secure user logins and robust APIs.",
+    },
+    {
+      title: "Content & Admin Systems",
+      desc: "For teams who want full control. Stop paying developers just to change a paragraph. I build custom Admin Dashboards (Headless CMS) so you can effortlessly manage blogs, products, and media while I handle the core infrastructure.",
+    },
+  ];
+
   return (
-    <section id="services" className="w-full py-24 px-6 bg-slate-950">
-      {/* HEADER */}
-      <div className="mb-16 max-w-3xl mx-auto text-center">
-        <h2 className="text-cyan-500 font-mono text-xs tracking-[0.3em] uppercase mb-4">
-          Capabilities
-        </h2>
-        <h1 className="text-4xl font-bold text-white mb-6">
-          System Architecture
-        </h1>
-        <p className="text-slate-400 text-lg">
-          Bridging the gap between complex backend logic and pixel-perfect
-          design.
-        </p>
-      </div>
-
-      {/* GRID */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-        {servicesItems.map((service, index) => (
-          <div
-            key={index}
-            className="flex flex-col p-8 rounded-2xl border border-slate-800 bg-slate-900/20 hover:border-slate-700 transition-colors duration-300"
+    <section id="services" className="w-full bg-slate-950 py-32 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* CENTERED HEADER - Matches Hero/About style */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center mb-20"
+        >
+          <motion.p
+            variants={itemVariants}
+            className="text-cyan-500 font-mono text-xs uppercase tracking-[0.3em] mb-4"
           >
-            {/* ICON */}
-            <div className="mb-6 text-cyan-500">{service.icon}</div>
+            My Expertise
+          </motion.p>
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight"
+          >
+            Specializing in{" "}
+            <span className="text-slate-500">modern web logic.</span>
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-slate-400 text-lg max-w-2xl mx-auto"
+          >
+            I focus on building engines that are as powerful as they are
+            beautiful, ensuring your project is ready for production from day
+            one.
+          </motion.p>
+        </motion.div>
 
-            {/* CONTENT */}
-            <h3 className="text-xl font-bold text-white mb-4">
-              {service.title}
-            </h3>
-
-            <p className="text-slate-400 text-sm leading-relaxed">
-              {service.description}
-            </p>
-          </div>
-        ))}
+        {/* SIMPLE STRUCTURED CARDS */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="p-10 bg-slate-900/30 border border-slate-800 rounded-[2.5rem] hover:border-slate-700 transition-colors duration-500"
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">
+                {service.title}
+              </h3>
+              <p className="text-slate-400 leading-relaxed text-sm">
+                {service.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 }
-
-const servicesItems = [
-  {
-    title: "Modern Web Platforms",
-    description:
-      "I build fast, modern websites using Next.js and Server-Side Rendering (SSR). Your website loads quickly, performs smoothly on all devices, and is optimized to rank better on Google — giving visitors an app-like experience without complexity.",
-    icon: <Monitor className="w-8 h-8" />,
-  },
-  {
-    title: "Interactive Web Applications",
-    description:
-      "Need more than a website? I develop custom web applications with secure authentication, API integrations, and scalable architecture. Whether it's client dashboards, SaaS platforms, or business tools, I turn complex ideas into reliable systems.",
-    icon: <Cpu className="w-8 h-8" />,
-  },
-  {
-    title: "Flexible Content Systems",
-    description:
-      "I build websites where you can update text, images, and content without touching code. Using modern headless systems like Sanity, your website stays easy to manage, scalable, and ready to grow with your business.",
-    icon: <Database className="w-8 h-8" />,
-  },
-];
