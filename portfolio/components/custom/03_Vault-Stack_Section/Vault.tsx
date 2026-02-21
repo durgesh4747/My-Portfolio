@@ -4,12 +4,13 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   motion,
   useMotionValue,
+  useSpring,
   AnimatePresence,
-  MotionValue,
 } from "framer-motion";
-import { FiX, FiExternalLink, FiLock } from "react-icons/fi";
+import { FiX, FiExternalLink, FiLock, FiTerminal } from "react-icons/fi";
 import Image from "next/image";
 import { Project } from "@/app/page";
+import { PortableText } from "@portabletext/react";
 
 interface WorkProps {
   projects: Project[];
@@ -19,53 +20,51 @@ interface ProjectCardProps {
   item: Project;
   index: number;
   setSelected: (project: Project) => void;
-  handleMouse: (e: React.MouseEvent<HTMLDivElement>) => void;
-  springX: MotionValue<number>;
-  springY: MotionValue<number>;
 }
 
-function ProjectCard({
-  item,
-  index,
-  setSelected,
-  handleMouse,
-  springX,
-  springY,
-}: ProjectCardProps) {
+function ProjectCard({ item, index, setSelected }: ProjectCardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (videoRef.current) {
-          if (entry.isIntersecting) {
-            videoRef.current.play().catch(() => {});
-          } else {
-            videoRef.current.pause();
-          }
-        }
-      },
-      { threshold: 0.6 },
-    );
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-    if (videoRef.current) observer.observe(videoRef.current);
-    return () => observer.disconnect();
-  }, []);
+  const springConfig = { damping: 30, stiffness: 150, mass: 0.5 };
+  const springX = useSpring(x, springConfig);
+  const springY = useSpring(y, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - (rect.left + rect.width / 2)) / 20);
+    y.set((rect.top + rect.height / 2 - e.clientY) / 20);
+  };
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+  };
 
   return (
     <motion.div
-      onMouseMove={handleMouse}
-      onMouseLeave={() => {
-        springX.set(0);
-        springY.set(0);
-      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onClick={() => setSelected(item)}
       style={{
         rotateX: springY,
         rotateY: springX,
         transformStyle: "preserve-3d",
+        willChange: "transform",
       }}
-      className="group relative w-full max-w-85 h-115 bg-slate-900/40 border border-slate-800 rounded-[2rem] p-8 flex flex-col justify-between cursor-pointer hover:border-cyan-500/50 transition-colors shadow-2xl"
+      className="group relative w-full max-w-85 h-115 bg-slate-900/20 backdrop-blur-md border border-slate-800/50 rounded-[2.5rem] p-8 flex flex-col justify-between cursor-pointer hover:border-cyan-500/40 transition-all duration-500 shadow-2xl"
     >
       <div
         className="flex justify-between items-center"
@@ -81,7 +80,7 @@ function ProjectCard({
       </div>
 
       <div
-        className="relative h-48 rounded-2xl overflow-hidden border border-slate-800 bg-slate-950"
+        className="relative h-48 rounded-2xl overflow-hidden border border-slate-800/50 bg-slate-950/50"
         style={{ transform: "translateZ(40px)" }}
       >
         <video
@@ -90,6 +89,7 @@ function ProjectCard({
           loop
           muted
           playsInline
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 z-10"
         />
         {item.thumbnail && (
@@ -98,7 +98,7 @@ function ProjectCard({
             alt={item.title}
             fill
             unoptimized
-            className="object-cover opacity-70 group-hover:scale-150 transition-transform duration-700 hover:opacity-0"
+            className="object-cover opacity-70 group-hover:scale-110 transition-transform duration-700"
           />
         )}
         <div className="scanner absolute w-full h-[1.1px] bg-cyan-400/50 shadow-[0_0_15px_#22d3ee] z-20 opacity-0 group-hover:opacity-100" />
@@ -121,60 +121,96 @@ function ProjectCard({
 export default function Vault({ projects }: WorkProps) {
   const [selected, setSelected] = useState<Project | null>(null);
 
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
   useEffect(() => {
-    if (selected) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = selected ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [selected]);
 
-  const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - (rect.left + rect.width / 2)) / 15);
-    y.set((rect.top + rect.height / 2 - e.clientY) / 15);
-  };
-
   return (
     <section
       id="vault"
-      className="bg-slate-950 py-24 px-6 text-white overflow-hidden"
+      className="relative bg-[#020617] py-32 px-6 text-white overflow-hidden"
     >
+      {/* --- THE SUBTLE GLOBAL BACKGROUND --- */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* 1. The Base Depth */}
+        <div className="absolute inset-0 bg-[#020617]" />
+
+        {/* 2. The Micro-Dot Grid */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `radial-gradient(#1e293b 1px, transparent 1px)`,
+            backgroundSize: "30px 30px",
+          }}
+        />
+
+        {/* 3. The Slow-Motion Aurora Orbs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-cyan-900/10 blur-[120px]"
+        />
+
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            x: [0, -50, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+          className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-blue-900/10 blur-[150px]"
+        />
+
+        {/* 4. The Edge Fade */}
+        <div className="absolute inset-0 bg-linear-to-b from-[#020617] via-transparent to-[#020617]" />
+      </div>
+
       <style>{`
         @keyframes scan { 0%, 100% { top: 0%; opacity: 0; } 50% { opacity: 1; } 100% { top: 100%; } }
         .scanner { animation: scan 3s linear infinite; }
       `}</style>
 
-      <div className="text-center mb-20">
-        <h2 className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">
-          Archive_v2.0
-        </h2>
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          The Digital Vault
-        </h1>
-        <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
-          [STATUS: MONITORING_NODES]
-        </p>
-      </div>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">
+            Archive_v2.0
+          </h2>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            The Digital Vault
+          </h1>
+          <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
+            [ Authenticated Access Only ]
+          </p>
+        </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-10 perspective-distant">
-        {projects.map((item, index) => (
-          <ProjectCard
-            key={item._id}
-            item={item}
-            index={index}
-            setSelected={setSelected}
-            handleMouse={handleMouse}
-            springX={x}
-            springY={y}
-          />
-        ))}
+        <div className="flex flex-wrap justify-center gap-10 perspective-distant">
+          {projects.map((item, index) => (
+            <ProjectCard
+              key={item._id}
+              item={item}
+              index={index}
+              setSelected={setSelected}
+            />
+          ))}
+        </div>
       </div>
 
       <AnimatePresence>
@@ -183,16 +219,17 @@ export default function Vault({ projects }: WorkProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 bg-slate-950/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-100 bg-slate-950/80 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
           >
             <motion.div
-              initial={{ scale: 0.95, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              className="bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row relative"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row relative shadow-2xl shadow-cyan-500/20"
             >
               <button
                 onClick={() => setSelected(null)}
-                className="absolute top-6 right-6 p-3 bg-slate-800/80 hover:bg-red-500 text-white rounded-full z-110 transition-colors"
+                className="absolute top-6 right-6 p-3 bg-slate-800/80 hover:bg-red-500 text-white rounded-full z-110 transition-all"
               >
                 <FiX />
               </button>
@@ -201,28 +238,40 @@ export default function Vault({ projects }: WorkProps) {
                 {selected.videoUrl && (
                   <iframe
                     className="w-full h-full"
-                    src={`https://www.youtube.com/embed/${selected.videoUrl.split("v=")[1]?.split("&")[0] || selected.videoUrl.split("/").pop()}?autoplay=1`}
+                    src={`https://www.youtube.com/embed/${
+                      selected.videoUrl.split("v=")[1]?.split("&")[0] ||
+                      selected.videoUrl.split("/").pop()
+                    }?autoplay=1`}
                     allowFullScreen
                   />
                 )}
               </div>
 
               <div className="md:w-2/5 p-8 md:p-12 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-800">
-                <span className="text-cyan-500 font-mono text-[10px] uppercase mb-4 tracking-widest">
-                  Build_Details
-                </span>
-                <h2 className="text-3xl font-bold mb-6 text-white">
+                <div className="flex items-center gap-2 mb-4">
+                  <FiTerminal className="text-cyan-500" />
+                  <span className="text-cyan-500 font-mono text-[10px] uppercase tracking-widest">
+                    CaseStudy_Report
+                  </span>
+                </div>
+
+                <h2 className="text-3xl font-bold mb-4 text-white leading-tight">
                   {selected.title}
                 </h2>
-                <p className="text-slate-400 text-sm mb-10 leading-relaxed">
-                  Full technical breakdown and execution architecture available
-                  via project link.
-                </p>
+
+                <div className="mb-8 max-h-62.5 overflow-y-auto pr-2 custom-scrollbar text-slate-400 text-sm leading-relaxed prose prose-invert prose-sm">
+                  {selected.caseStudy ? (
+                    <PortableText value={selected.caseStudy} />
+                  ) : (
+                    <p>No CaseStudy provided for this project. Stay Tuned!</p>
+                  )}
+                </div>
+
                 <a
                   href={selected.projectLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-4 bg-cyan-500 text-slate-950 font-bold rounded-2xl hover:bg-white transition-all flex items-center justify-center gap-2 group"
+                  className="w-full py-4 bg-cyan-500 text-slate-950 font-bold rounded-2xl hover:bg-white transition-all flex items-center justify-center gap-2 group active:scale-95"
                 >
                   Visit Deployment <FiExternalLink />
                 </a>
