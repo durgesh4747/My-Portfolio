@@ -42,17 +42,18 @@ export default function ContactForm() {
 
   return (
     <section
-      id="contact"
-      className="w-full py-16 px-4 flex justify-center bg-slate-950"
+      id="contact_form"
+      /* CHANGE: Removed bg-slate-950 and used bg-transparent so it doesn't clash with the section background */
+      className="w-full py-8 md:py-16 px-0 flex justify-center bg-transparent"
     >
-      <div className="w-full max-w-4xl bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+      <div className="w-full max-w-4xl bg-slate-900/20 backdrop-blur-md border border-slate-800/50 rounded-3xl overflow-hidden shadow-2xl">
         {/* HEADER */}
-        <div className="bg-slate-950/50 border-b border-slate-800 p-4 md:p-6">
+        <div className="bg-slate-950/30 border-b border-slate-800/50 p-4 md:p-6">
           <div className="flex items-center gap-4 w-full justify-between">
             <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/50" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
-              <div className="w-3 h-3 rounded-full bg-green-500/50" />
+              <div className="w-3 h-3 rounded-full bg-red-500/30" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/30" />
+              <div className="w-3 h-3 rounded-full bg-green-500/30" />
             </div>
             <div className="font-mono text-xs text-cyan-400 flex items-center gap-2 bg-cyan-500/10 p-2 rounded-2xl border border-cyan-500/20">
               <Terminal size={12} />
@@ -79,7 +80,6 @@ export default function ContactForm() {
                   Client_Identity
                 </label>
                 <div className="relative">
-                  {/* HONEPOT: TRAP FOR BOTS */}
                   <input
                     type="text"
                     name="security_honeypot"
@@ -165,35 +165,30 @@ export default function ContactForm() {
                     >
                       Personal Brand / Portfolio
                     </option>
-
                     <option
                       className="bg-slate-900 text-slate-300"
                       value="Business"
                     >
                       Business / Company Website
                     </option>
-
                     <option
                       className="bg-slate-900 text-slate-300"
                       value="E-commerce"
                     >
                       Online Store / Shop
                     </option>
-
                     <option
                       className="bg-slate-900 text-slate-300"
                       value="Web App"
                     >
                       Custom Web App / Tool
                     </option>
-
                     <option
                       className="bg-slate-900 text-slate-300"
                       value="Maintenance"
                     >
                       Revamp / Fix Existing Site
                     </option>
-
                     <option
                       className="bg-slate-900 text-slate-300"
                       value="Other"
@@ -295,7 +290,7 @@ export default function ContactForm() {
                 name="message"
                 defaultValue={state.data?.message || ""}
                 placeholder="Describe system requirements..."
-                className="w-full bg-slate-900/30 border border-slate-700 rounded-xl p-4 text-white focus:outline-none transition-all placeholder:text-slate-600 resize-none"
+                className="w-full bg-slate-950/20 border border-slate-700/50 rounded-xl p-4 text-white focus:outline-none transition-all placeholder:text-slate-600 resize-none"
               />
               {state.errors?.message && (
                 <p className="text-rose-500 text-[10px] font-mono uppercase mt-1">
