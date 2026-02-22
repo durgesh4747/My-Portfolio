@@ -89,8 +89,9 @@ export default function Footer() {
             Durgesh Sutariya<span className="text-cyan-500">.</span>
           </h2>
           <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-light">
-            A Developer building scalable digital systems and high-performance
-            web architecture. Based in Vadodara, Gujarat.
+            A highly specialized developer engineering scalable SaaS products,
+            headless systems, and high-performance web architecture. Based in
+            Vadodara, India.
           </p>
         </div>
 
@@ -178,7 +179,7 @@ export default function Footer() {
       {/* BOTTOM BAR - Sharpened for visibility */}
       <div className="w-full border-t border-slate-800/60 bg-slate-950/80 px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 cursor-default relative z-20">
         <p className="text-slate-400 text-[9px] md:text-[10px] font-mono uppercase tracking-[0.2em]">
-          © {new Date().getFullYear()} Durgesh Sutariya. Engineered for
+          © {new Date().getFullYear()} Durgesh Sutariya. Programmed for
           performance.
         </p>
 
