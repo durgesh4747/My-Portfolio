@@ -197,7 +197,8 @@ export default function Vault({ projects }: WorkProps) {
             The Digital Vault
           </h1>
           <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
-            [ Authenticated Access Only ]
+            Production-grade systems, tailored SaaS solutions, and premium
+            digital experiences.
           </p>
         </motion.div>
 

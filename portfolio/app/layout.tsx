@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import {Toaster} from 'sonner'
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,25 +15,37 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Durgesh | Software Architect & SaaS Developer",
+  title: "Durgesh Sutariya | Software Architect & SaaS Developer",
+
   description:
-    "Portfolio of Durgesh, a Full-Stack Engineer specializing in High-Performance Next.js Web Apps, SaaS Architecture, and Scalable Backend Systems.",
+    "Portfolio of Durgesh Sutariya, a Full-Stack Engineer based in Vadodara, specializing in High-Performance Next.js Web Apps, SaaS Architecture, and Scalable Backend Systems.",
+
   keywords: [
-    "Next.js Developer",
+    "Durgesh Sutariya",
+    "Durgesh Dev",
+    "Durgesh",
+    "Next.js Developer India",
+    "Software Architect Vadodara",
     "SaaS Architect",
-    "React Developer India",
-    "Web Performance",
-    "Sanity CMS",
-    "Software Engineer Portfolio",
+    "Freelance Web Developer",
   ],
+
   openGraph: {
-    title: "Durgesh | Building Scalable Digital Systems",
+    title: "Durgesh Sutariya | Building Scalable Digital Systems",
     description:
-      "I architect high-performance SaaS platforms. View my case studies.",
+      "I engineer high-performance web applications and SaaS platforms. View my digital vault.",
+    type: "website",
+    locale: "en_IN",
+    // url: "https://yourdomain.com", // After my domain!
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
-// ADD OPENGRAPH IMG
+// OPENGRAPH IMG
 export default function RootLayout({
   children,
 }: Readonly<{
