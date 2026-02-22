@@ -75,8 +75,8 @@ export default function ContactSection() {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight"
           >
-            Let&apos;s build{" "}
-            <span className="text-slate-500">something amazing.</span>
+            Initialize your {" "}
+            <span className="text-slate-500">next project.</span>
           </motion.h2>
           <motion.p
             variants={itemVariants}

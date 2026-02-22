@@ -13,16 +13,15 @@ import {
 import { FaRocket } from "react-icons/fa";
 
 export default function Hero() {
-  // --- TERMINAL TYPING LOGIC ---
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
   useEffect(() => {
-    // Define it inside so it's not an external dependency
     const fullLog = [
-      "System.Initialize();",
       "Establishing secure connection...",
-      "Routing protocols active.",
-      "Fetching architect profile...",
-      "Status: ONLINE & READY.",
+      "Loading project environment...",
+      "Routing traffic protocols...",
+      "Architecture verified.",
+      "Status: READY FOR DEPLOYMENT.",
+      "Post-launch support: Active."
     ];
 
     let currentLine = 0;
@@ -36,8 +35,8 @@ export default function Hero() {
     }, 800);
 
     return () => clearInterval(interval);
-  }, []); // Array remains empty because fullLog is now local
-  // --- SCROLL HANDLER ---
+  }, []);
+  // SCROLL HANDLER
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     id: string,
@@ -56,7 +55,7 @@ export default function Hero() {
     }
   };
 
-  // --- ANIMATION VARIANTS ---
+  // ANIMATION VARIANTS
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -123,9 +122,9 @@ export default function Hero() {
             variants={itemVariants}
             className="max-w-xl text-slate-400 text-base sm:text-lg md:text-xl leading-relaxed mb-10 font-light px-2 lg:px-0"
           >
-            Hi, I&apos;m Durgesh. A Software Architect engineering
-            high-performance web applications. I transform complex problems into
-            clean, production-ready digital systems.
+            Hi, I&apos;m Durgesh. A Software Architect specializing in
+            high-performance web applications. I transform complex business
+            problems into clean, production-ready digital systems.
           </motion.p>
 
           <motion.div
@@ -138,20 +137,20 @@ export default function Hero() {
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-cyan-500 text-slate-950 font-bold transition-all hover:bg-cyan-400 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center justify-center gap-2"
             >
               <FiTerminal className="text-lg" />
-              Access_Vault
+              View_Work
             </a>
             <a
               href="#services"
               onClick={(e) => handleScroll(e, "services")}
               className="group w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-slate-700 bg-slate-900/50 backdrop-blur-md text-slate-300 font-bold hover:text-white hover:bg-slate-800 transition-colors active:scale-95"
             >
-              View Services
+              See How I Work
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
             </a>
           </motion.div>
         </div>
 
-       {/* Right */}
+        {/* Right */}
         <div className="col-span-1 lg:col-span-5 grid grid-cols-1 gap-4 mt-8 lg:mt-0">
           {/* Widget 1: Active Terminal */}
           <motion.div
