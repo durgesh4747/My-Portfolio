@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "sonner";
+import LazyGA from "@/Mini_components/LazyGA";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       "I engineer high-performance web applications and SaaS platforms. View my digital vault.",
     type: "website",
     locale: "en_IN",
-    // url: "https://yourdomain.com", // After my domain!
+    url : "https://durgeshdev.in/"
   },
 
   robots: {
@@ -58,7 +58,7 @@ export default function RootLayout({
       >
         {children}
         {process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+          <LazyGA gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
         <Toaster theme="dark" position="top-center" richColors />
       </body>

@@ -145,6 +145,7 @@ export default function NavBar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Menu"
               className="relative z-110 flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-slate-300 md:hidden border border-white/10 active:scale-90 transition-transform"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -161,7 +162,7 @@ export default function NavBar() {
             animate={{ clipPath: "circle(150% at 90% 5%)", opacity: 1 }}
             exit={{ clipPath: "circle(0% at 90% 5%)", opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-100 h-screen w-screen bg-slate-950/98 backdrop-blur-3xl md:hidden"
+            className="fixed inset-0 z-100 h-screen w-screen bg-slate-950/95 backdrop-blur-md md:hidden"
           >
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-size-[40px_40px] bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)]" />
 
