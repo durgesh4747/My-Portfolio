@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export default function About() {
-  // Animation variants for staggered entrance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -35,7 +34,7 @@ export default function About() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
-        {/* === LEFT SIDE: VISUAL ARCHITECTURE (5 Columns) === */}
+        {/* LEFT SIDE: VISUAL ARCHITECTURE */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -50,7 +49,6 @@ export default function About() {
             className=" relative z-10 h-112.5 w-full rounded-[3rem] overflow-hidden border-2 border-slate-800/80 bg-slate-950 group"
           >
             <Image
-              // REPLACE WITH YOUR PHOTO
               src="https://images.pexels.com/photos/35031430/pexels-photo-35031430.jpeg"
               alt="Aditya - System Architect"
               fill
@@ -58,7 +56,7 @@ export default function About() {
             />
           </motion.div>
 
-          {/* LAYER B: The Floating "Data Node" (Overlaps photo) */}
+          {/* LAYER B: The Floating Data Node*/}
           <motion.div
             variants={itemVariants}
             className="absolute -bottom-10 -right-10 z-20 w-54 h-54 md:w-64 md:h-64 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-6 flex flex-col justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] cursor-default"
@@ -88,7 +86,7 @@ export default function About() {
                 </p>
               </div>
             </div>
-            {/* Spinning border decoration */}
+            {/* Spinning border */}
             <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-[spin_20s_linear_infinite] pointer-events-none" />
           </motion.div>
 
@@ -96,7 +94,7 @@ export default function About() {
           <div className="absolute top-10 -left-10 w-full h-full border border-slate-800/50 rounded-[3rem] -z-10" />
         </motion.div>
 
-        {/* === RIGHT SIDE: THE NARRATIVE (7 Columns) === */}
+        {/* RIGHT SIDE: THE NARRATIVE */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
