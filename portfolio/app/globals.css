@@ -259,78 +259,61 @@
 
 /* GPU ORBS */
 
-.aurora-orb{
+.aurora-orb {
+  position: absolute;
 
-position:absolute;
+  border-radius: 9999px;
 
-border-radius:9999px;
+  filter: blur(130px);
 
-filter:blur(130px);
+  opacity: 0.2;
 
-opacity:.2;
+  animation: auroraFloat 26s ease-in-out infinite;
 
-animation:auroraFloat 26s ease-in-out infinite;
+  will-change: transform;
 
-will-change:transform;
-
-transform:translate3d(0,0,0);
-
+  transform: translate3d(0, 0, 0);
 }
 
-.aurora-orb.cyan{
+.aurora-orb.cyan {
+  top: -10%;
 
-top:-10%;
+  left: -10%;
 
-left:-10%;
+  width: 70vw;
 
-width:70vw;
+  height: 70vw;
 
-height:70vw;
-
-background:#0891b222;
-
+  background: #0891b222;
 }
 
-.aurora-orb.blue{
+.aurora-orb.blue {
+  bottom: -10%;
 
-bottom:-10%;
+  right: -10%;
 
-right:-10%;
+  width: 60vw;
 
-width:60vw;
+  height: 60vw;
 
-height:60vw;
+  background: #1d4ed822;
 
-background:#1d4ed822;
-
-animation-duration:32s;
-
+  animation-duration: 32s;
 }
 
+@keyframes auroraFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 
-@keyframes auroraFloat{
-
-0%,100%{
-
-transform:translate3d(0,0,0) scale(1);
-
+  50% {
+    transform: translate3d(40px, -30px, 0) scale(1.05);
+  }
 }
 
-50%{
-
-transform:translate3d(40px,-30px,0) scale(1.05);
-
-}
-
-}
-
-
-@media(prefers-reduced-motion:reduce){
-
-.aurora-orb{
-
-animation:none;
-
-}
-
+@media (prefers-reduced-motion: reduce) {
+  .aurora-orb {
+    animation: none;
+  }
 }
