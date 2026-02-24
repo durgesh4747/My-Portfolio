@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { FiX, FiExternalLink, FiLock, FiTerminal } from "react-icons/fi";
 import Image from "next/image";
@@ -29,7 +29,6 @@ const itemVariants: Variants = {
   },
 };
 
-// Memoized to prevent parent re-renders from affecting cards
 const ProjectCard = memo(({ item, index, setSelected }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -54,7 +53,6 @@ const ProjectCard = memo(({ item, index, setSelected }: ProjectCardProps) => {
       </div>
 
       <div className="relative h-48 rounded-2xl overflow-hidden border border-slate-800/50 bg-slate-950/50">
-        {/* LAZY VIDEO: Only mounts when hovered on desktop to save initial scroll memory */}
         {isHovered &&
           typeof window !== "undefined" &&
           window.innerWidth > 1024 && (
@@ -74,14 +72,13 @@ const ProjectCard = memo(({ item, index, setSelected }: ProjectCardProps) => {
             src={item.thumbnail}
             alt={item.title}
             fill
-            // unoptimized // It might be the main reason for the lag - 
+            // unoptimized // It might be the main reason for the lag -
             className={`object-cover transition-all duration-700 ${
               isHovered ? "scale-110 opacity-40" : "opacity-70"
             }`}
           />
         )}
 
-        {/* SCANNER: Uses GPU-accelerated translateY instead of top */}
         <div className="scanner absolute w-full h-[1.1px] bg-cyan-400/50 shadow-[0_0_15px_#22d3ee] z-20 opacity-0 group-hover:opacity-100" />
       </div>
 
@@ -176,15 +173,15 @@ export default function Vault({ projects }: WorkProps) {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <h2 className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">
+          <h1 className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">
             Archive_v2.0
-          </h2>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            The Digital Vault
           </h1>
-          <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            The Digital Vault
+          </h2>
+          <h3 className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
             Production-grade systems, tailored SaaS solutions.
-          </p>
+          </h3>
         </motion.div>
 
         <motion.div
@@ -220,6 +217,7 @@ export default function Vault({ projects }: WorkProps) {
               className="bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row relative shadow-2xl"
             >
               <button
+                aria-label="Close Button"
                 onClick={() => setSelected(null)}
                 className="absolute top-6 right-6 p-3 bg-slate-800/80 hover:bg-red-500 text-white rounded-full z-110 transition-all"
               >

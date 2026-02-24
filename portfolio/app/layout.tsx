@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import LazyGA from "@/Mini_components/LazyGA";
+import NavBar from "@/components/custom/01_Navbar/NavBar";
+import Footer from "@/components/custom/07_Footer_Section/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +38,7 @@ export const metadata: Metadata = {
       "I engineer high-performance web applications and SaaS platforms. View my digital vault.",
     type: "website",
     locale: "en_IN",
-    url : "https://durgeshdev.in/"
+    url: "https://durgeshdev.in/",
   },
 
   robots: {
@@ -56,10 +58,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}
       >
-        {children}
+        <NavBar/>
+        <main>{children}</main>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <LazyGA gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}
+        <Footer/>
         <Toaster theme="dark" position="top-center" richColors />
       </body>
     </html>

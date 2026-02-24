@@ -200,6 +200,7 @@ export default function NavBar() {
                 className=" mt-6 w-full max-w-70 flex flex-col gap-4 border-t pt-6 border-cyan-200/20"
               >
                 <button
+                  aria-label="Contact Button"
                   onClick={(e) => handleScrollTo(e, "contact")}
                   className={`flex w-full items-center justify-center gap-1 rounded-2xl py-2 text-sm font-bold transition-all active:scale-[0.98] ${
                     activeSection === "contact"
@@ -212,6 +213,7 @@ export default function NavBar() {
 
                 {/* Cancel Button */}
                 <button
+                  aria-label="Cancel Button"
                   onClick={() => setIsOpen(false)}
                   className="flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-xs font-mono text-slate-500 hover:text-white transition-colors"
                 >
