@@ -104,12 +104,12 @@ export default function Services() {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <motion.p
+          <motion.h1
             variants={itemVariants}
             className="text-cyan-500 font-mono text-xs uppercase tracking-[0.3em] mb-4"
           >
             My Expertise
-          </motion.p>
+          </motion.h1>
 
           <motion.h2
             variants={itemVariants}
@@ -119,13 +119,13 @@ export default function Services() {
             <span className="text-slate-500">modern web logic.</span>
           </motion.h2>
 
-          <motion.p
+          <motion.h3
             variants={itemVariants}
             className="text-slate-400 text-lg max-w-2xl mx-auto"
           >
             I focus on building engines that are as powerful as they are
             beautiful.
-          </motion.p>
+          </motion.h3>
         </motion.div>
 
         <motion.div
@@ -144,30 +144,14 @@ export default function Services() {
                 variants={itemVariants}
                 onClick={() => setActiveCard(isActive ? null : index)}
                 className={`group relative p-8 md:p-10 bg-slate-900/20 backdrop-blur-md border rounded-[2.5rem] overflow-hidden transition-all duration-500 flex flex-col h-full cursor-pointer
-
-${
-  isActive
-    ? "border-cyan-500/30 -translate-y-2 shadow-[0_10px_40px_-15px_rgba(6,182,212,0.15)]"
-    : "border-slate-800/50 hover:border-cyan-500/30 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(6,182,212,0.15)]"
-}
-
-`}
+                  ${isActive ? "border-cyan-500/30 -translate-y-2 shadow-[0_10px_40px_-15px_rgba(6,182,212,0.15)]" : "border-slate-800/50 hover:border-cyan-500/30 hover:-translate-y-2 hover:shadow-[0_10px_40px_-15px_rgba(6,182,212,0.15)]"}`}
               >
                 <div
-                  className={`absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent transition-opacity duration-700
-
-${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-
-`}
+                  className={`absolute inset-0 bg-linear-to-br from-cyan-500/10 via-transparent to-transparent transition-opacity duration-700 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
                 />
-
                 <div className="relative z-10 flex flex-col h-full">
                   <h3
-                    className={`text-2xl font-bold mb-8 transition-colors duration-300
-
-${isActive ? "text-cyan-400" : "text-white group-hover:text-cyan-400"}
-
-`}
+                    className={`text-2xl font-bold mb-8 transition-colors duration-300 ${isActive ? "text-cyan-400" : "text-white group-hover:text-cyan-400"}`}
                   >
                     {service.title}
                   </h3>

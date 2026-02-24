@@ -44,16 +44,19 @@ export default function Footer() {
   const socials = [
     {
       name: "LinkedIn",
+      label: "Linkedin",
       icon: <FiLinkedin />,
       href: "https://www.linkedin.com/in/durgesh-sutariya-929b82333/",
     },
     {
       name: "GitHub",
+      label: "Github",
       icon: <FiGithub />,
       href: "https://github.com/durgesh4747",
     },
     {
       name: "X / Twitter",
+      label: "X - Twitter",
       icon: <FiTwitter />,
       href: "https://x.com/DurgeshS4747",
     },
@@ -64,7 +67,6 @@ export default function Footer() {
       id="footer"
       className="relative w-full bg-[#020617] border-t border-slate-900/50 overflow-hidden"
     >
-      {/* --- THE SUBTLE GLOBAL BACKGROUND --- */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div className="absolute inset-0 bg-[#020617]" />
         <div
@@ -74,7 +76,6 @@ export default function Footer() {
             backgroundSize: "30px 30px",
           }}
         />
-        {/* Faint orb for the corner depth */}
         <motion.div
           animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
@@ -144,7 +145,7 @@ export default function Footer() {
                   +91 99044 10362
                 </span>
               </div>
-              <FaWhatsapp className="text-slate-600 group-hover:text-green-500 transition-colors text-lg" />
+              <FaWhatsapp aria-label="WhatsApp" className="text-slate-600 group-hover:text-green-500 transition-colors text-lg" />
             </a>
           </div>
         </div>
@@ -159,6 +160,7 @@ export default function Footer() {
               <a
                 key={social.name}
                 href={social.href}
+                aria-label={`${social.label}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between p-3 rounded-xl hover:bg-slate-900/30 group transition-all"
@@ -176,7 +178,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* BOTTOM BAR - Sharpened for visibility */}
+      {/* BOTTOM BAR*/}
       <div className="w-full border-t border-slate-800/60 bg-slate-950/80 px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 cursor-default relative z-20">
         <p className="text-slate-400 text-[9px] md:text-[10px] font-mono uppercase tracking-[0.2em]">
           © {new Date().getFullYear()} Durgesh Sutariya. Programmed for

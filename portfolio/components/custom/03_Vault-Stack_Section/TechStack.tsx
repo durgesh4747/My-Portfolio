@@ -45,7 +45,7 @@ function TechItem({ tech }: { tech: (typeof techStack)[0] }) {
       style={{ "--active-color": tech.color } as React.CSSProperties}
       className="group flex items-center gap-3 cursor-default hover:scale-110 transition-transform duration-500"
     >
-      {/* ICON */}
+      {/* Icon's */}
       <span
         className="
         text-3xl md:text-4xl transition-all duration-500
@@ -59,7 +59,7 @@ function TechItem({ tech }: { tech: (typeof techStack)[0] }) {
         {tech.icon}
       </span>
 
-      {/* NAME */}
+      {/* Name */}
       <span
         className="
         text-sm md:text-base font-mono font-medium uppercase tracking-tighter
@@ -90,9 +90,7 @@ export default function TechStack() {
           </div>
         </div>
 
-        {/* Fade */}
         <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-[#0F172A] to-transparent z-10" />
-
         <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-[#0F172A] to-transparent z-10" />
       </div>
     </section>

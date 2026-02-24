@@ -32,7 +32,6 @@ export default function Hero() {
     });
   }, []);
 
-  // Smooth scroll
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
 
@@ -47,8 +46,6 @@ export default function Hero() {
 
     history.pushState(null, "", `#${id}`);
   };
-
-  // ABOUT STYLE ANIMATION
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,7 +78,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-dvh w-full flex items-center justify-center bg-[#020617] overflow-hidden pt-24 pb-12 px-4 sm:px-6"
     >
-      {/* ===== Ambient Background ===== */}
+      {/*  Ambient bg  */}
 
       <div className="absolute inset-0 pointer-events-none">
         <div className="ambient-glow cyan" />
@@ -110,13 +107,13 @@ export default function Hero() {
             </span>
           </motion.h1>
 
-          <motion.p
+          <motion.h2
             variants={itemVariants}
             className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
           >
             Hi, I&apos;m Durgesh. A Software Architect specializing in
             high-performance web applications.
-          </motion.p>
+          </motion.h2>
 
           <motion.div
             variants={itemVariants}
@@ -176,12 +173,10 @@ export default function Hero() {
               <FiTarget className="text-blue-400" /> Proven Workflow
             </div>
 
-            {/* Timeline */}
             <div className="relative flex-1 flex items-center justify-between px-2 md:px-6 mt-2">
-              {/* Background Line */}
+              {/* bg line */}
               <div className="workflow-line">
-                {/* Moving Packet */}
-                <div className="workflow-packet" />
+              <div className="workflow-packet" />
               </div>
 
               {[
@@ -194,19 +189,7 @@ export default function Hero() {
                   key={i}
                   className="relative z-10 flex flex-col items-center gap-3"
                 >
-                  <div
-                    className="
-        w-10 h-10 md:w-12 md:h-12
-        rounded-full
-        bg-slate-950
-        border border-slate-700
-        flex items-center justify-center
-        text-slate-300
-        shadow-[0_0_15px_rgba(0,0,0,0.5)]
-        group-hover:border-cyan-500/30
-        group-hover:text-cyan-400
-        transition-colors"
-                  >
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-slate-950 border border-slate-700 flex items-center justify-center text-slate-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] group-hover:border-cyan-500/30 group-hover:text-cyan-400 transition-colors">
                     {node.icon}
                   </div>
 
