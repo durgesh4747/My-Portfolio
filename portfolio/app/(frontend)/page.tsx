@@ -5,30 +5,25 @@ import Services from "@/components/custom/04_Services_Section/Services";
 import About from "@/components/custom/05_About_Section/AboutSection";
 import ContactSection from "@/components/custom/06_Contact_Section/ContactSection";
 import { client } from "@/sanity/lib/client";
-import { PortableTextBlock } from "next-sanity";
 
 export interface Project {
   _id: string;
   order: number;
-  isFeatured: boolean;
   title: string;
+  slug: { current: string };
   thumbnail: string;
   clip: string;
-  videoUrl: string;
-  caseStudy?: PortableTextBlock[];
-  projectLink?: string;
+  description: string;
 }
 
-const query = `*[_type == "work"] | order(order asc)[0...3]{
+const query = `*[_type == "work"] | order(order asc)[0...3] {
   _id,
   order,
-  isFeatured,
   title,
+  slug,
   "thumbnail":thumbnail.asset->url,
   "clip":clip.asset->url,
-  "videoUrl": videoUrl,
-  caseStudy,
-  "projectLink": projectLink,
+  description,
 }`;
 
 export const revalidate = 60;
