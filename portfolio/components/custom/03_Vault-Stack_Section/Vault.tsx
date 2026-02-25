@@ -1,271 +1,186 @@
 "use client";
 
-import React, { useState, useEffect, useRef, memo } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
-import { FiX, FiExternalLink, FiLock, FiTerminal } from "react-icons/fi";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
-import { Project } from "@/app/page";
-import { PortableText } from "@portabletext/react";
+import Link from "next/link";
+import { Project } from "@/app/(frontend)/page";
 
 interface WorkProps {
   projects: Project[];
 }
 
-interface ProjectCardProps {
-  item: Project;
-  index: number;
-  setSelected: (project: Project) => void;
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-// Memoized to prevent parent re-renders from affecting cards
-const ProjectCard = memo(({ item, index, setSelected }: ProjectCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  return (
-    <motion.div
-      variants={itemVariants}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setSelected(item)}
-      style={{ willChange: "transform, opacity" }}
-      className="group relative w-full max-w-85 h-115 bg-slate-900/20 backdrop-blur-md border border-slate-800/50 rounded-[2.5rem] p-8 flex flex-col justify-between cursor-pointer hover:border-cyan-500/40 transition-all duration-500 shadow-2xl hover:-translate-y-2"
-    >
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
-          <span className="text-[9px] font-mono text-slate-500 uppercase tracking-tighter">
-            NODE_0{index + 1}
-          </span>
-        </div>
-        <FiLock className="text-slate-600 group-hover:text-cyan-400 transition-colors text-sm" />
-      </div>
-
-      <div className="relative h-48 rounded-2xl overflow-hidden border border-slate-800/50 bg-slate-950/50">
-        {/* LAZY VIDEO: Only mounts when hovered on desktop to save initial scroll memory */}
-        {isHovered &&
-          typeof window !== "undefined" &&
-          window.innerWidth > 1024 && (
-            <video
-              ref={videoRef}
-              src={item.clip}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-500"
-            />
-          )}
-
-        {item.thumbnail && (
-          <Image
-            src={item.thumbnail}
-            alt={item.title}
-            fill
-            // unoptimized // It might be the main reason for the lag - 
-            className={`object-cover transition-all duration-700 ${
-              isHovered ? "scale-110 opacity-40" : "opacity-70"
-            }`}
-          />
-        )}
-
-        {/* SCANNER: Uses GPU-accelerated translateY instead of top */}
-        <div className="scanner absolute w-full h-[1.1px] bg-cyan-400/50 shadow-[0_0_15px_#22d3ee] z-20 opacity-0 group-hover:opacity-100" />
-      </div>
-
-      <div>
-        <div className="flex gap-2 mb-4">
-          <span className="text-[8px] font-mono border border-cyan-500/20 px-2 py-0.5 rounded bg-cyan-500/5 text-cyan-500 uppercase">
-            {item.isFeatured ? "Priority_Build" : "System_Log"}
-          </span>
-        </div>
-        <h4 className="text-xl font-bold group-hover:text-cyan-400 transition-colors leading-tight">
-          {item.title}
-        </h4>
-      </div>
-    </motion.div>
-  );
-});
-
-ProjectCard.displayName = "ProjectCard";
-
 export default function Vault({ projects }: WorkProps) {
-  const [selected, setSelected] = useState<Project | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const progress = (scrollLeft / (scrollWidth - clientWidth)) * 100;
+      setScrollProgress(progress);
+      setCanScrollLeft(scrollLeft > 20);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 20);
+    }
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { clientWidth } = scrollRef.current;
+      const scrollAmount = clientWidth * 0.8;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
-    document.body.style.overflow = selected ? "hidden" : "unset";
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [selected]);
+    handleScroll();
+    window.addEventListener("resize", handleScroll);
+    return () => window.removeEventListener("resize", handleScroll);
+  }, [projects]);
 
   return (
     <section
       id="vault"
       className="relative bg-[#020617] py-32 px-6 text-white overflow-hidden"
     >
+      <div className="max-w-7xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto text-center mb-20">
+          <div className="inline-block py-1 px-3 border border-cyan-500/20 bg-cyan-500/5 rounded-full mb-4">
+            <span className="text-cyan-500 font-mono text-[10px] tracking-[0.3em] uppercase">
+              Archive_v2.0
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+            The Digital Vault
+          </h2>
+          <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
+            Technical architecture and production-grade deployments.
+          </p>
+        </div>
+        {/* Slider Container */}
+        <div className="relative">
+          <button
+            onClick={() => scroll("left")}
+            className={`absolute -left-6 top-[40%] z-40 hidden md:flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-md transition-all duration-300 ${
+              canScrollLeft
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-75 pointer-events-none"
+            } hover:border-cyan-500 hover:text-cyan-400 shadow-2xl`}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => scroll("right")}
+            className={`absolute -right-6 top-[40%] z-40 hidden md:flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-md transition-all duration-300 ${
+              canScrollRight
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-75 pointer-events-none"
+            } hover:border-cyan-500 hover:text-cyan-400 shadow-2xl`}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+
+          {/* Horizontal Scroll Area */}
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex gap-6 md:gap-8 overflow-x-auto pb-12 snap-x snap-mandatory no-scrollbar"
+          >
+            {projects.map((project) => (
+              <Link
+                href={`/vault/${project.slug.current}`}
+                key={project._id}
+                className="group relative shrink-0 w-[85vw] md:w-120 snap-center flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40 transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_40px_-15px_rgba(6,182,212,0.2)]"
+              >
+                {/* Image Section */}
+                <div className="relative h-64 md:h-72 w-full overflow-hidden border-b border-slate-800">
+                  <div className="absolute inset-0 z-10 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-500" />
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.title}
+                    fill
+                    className="object-cover grayscale transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
+                  />
+                  <div className="absolute top-4 right-4 z-20 flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1 text-[10px] font-mono text-cyan-400 border border-slate-800">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                    </span>
+                    LIVE
+                  </div>
+                </div>
+
+                {/* Text Content */}
+                <div className="p-8">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-2xl font-bold tracking-tight text-slate-200 group-hover:text-cyan-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    {/* <span className="text-slate-500 transition-transform duration-300 group-hover:translate-x-2 group-hover:text-cyan-400">
+                      
+                    </span> */}
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-400 font-mono line-clamp-2">
+                    {project.description ||
+                      "System data encrypted. Initialization sequence ready for deep-dive."}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="mt-4 flex flex-col items-center gap-4">
+            <div className="w-48 h-[2.01px] bg-slate-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-cyan-500 transition-all duration-150 ease-out"
+                style={{ width: `${scrollProgress}%` }}
+              />
+            </div>
+
+            <p
+              className={`text-[10px] font-mono text-slate-600 uppercase tracking-[0.2em] md:hidden transition-opacity duration-300 ${
+                canScrollRight ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              Swipe to explore
+            </p>
+          </div>
+        </div>
+      </div>
+
       <style jsx>{`
-        @keyframes scan-optimized {
-          0% {
-            transform: translateY(-100%);
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(400px);
-            opacity: 0;
-          }
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
         }
-        .scanner {
-          will-change: transform;
-        }
-        .group:hover .scanner {
-          animation: scan-optimized 3s linear infinite;
-        }
-        @keyframes aurora {
-          0%,
-          100% {
-            transform: translate(0, 0) scale(1);
-          }
-          50% {
-            transform: translate(30px, -20px) scale(1.1);
-          }
-        }
-        .aurora-orb {
-          will-change: transform;
-          animation: aurora 20s ease-in-out infinite;
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
-
-      <div className="absolute inset-0 pointer-events-none isolate">
-        <div className="absolute inset-0 bg-[#020617]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `radial-gradient(#1e293b 1px,transparent 1px)`,
-            backgroundSize: "30px 30px",
-          }}
-        />
-        <div className="aurora-orb absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-cyan-900/10 blur-[120px]" />
-        <div
-          className="aurora-orb absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-blue-900/10 blur-[150px]"
-          style={{ animationDelay: "-5s" }}
-        />
-        <div className="absolute inset-0 bg-linear-to-b from-[#020617] via-transparent to-[#020617]" />
-      </div>
-
-      <div className="relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-cyan-500 font-mono text-xs tracking-widest uppercase mb-4">
-            Archive_v2.0
-          </h2>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            The Digital Vault
-          </h1>
-          <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
-            Production-grade systems, tailored SaaS solutions.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ staggerChildren: 0.08 }}
-          className="flex flex-wrap justify-center gap-10 perspective-distant"
-        >
-          {projects.map((item, index) => (
-            <ProjectCard
-              key={item._id}
-              item={item}
-              index={index}
-              setSelected={setSelected}
-            />
-          ))}
-        </motion.div>
-      </div>
-
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-100 bg-slate-950/80 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-[2.5rem] overflow-hidden flex flex-col md:flex-row relative shadow-2xl"
-            >
-              <button
-                onClick={() => setSelected(null)}
-                className="absolute top-6 right-6 p-3 bg-slate-800/80 hover:bg-red-500 text-white rounded-full z-110 transition-all"
-              >
-                <FiX />
-              </button>
-
-              <div className="md:w-3/5 relative aspect-video md:aspect-auto bg-black flex items-center justify-center min-h-62.5">
-                {selected.videoUrl && (
-                  <iframe
-                    className="w-full h-full"
-                    src={`https://www.youtube.com/embed/${selected.videoUrl.split("v=")[1]?.split("&")[0] || selected.videoUrl.split("/").pop()}?autoplay=1`}
-                    allowFullScreen
-                  />
-                )}
-              </div>
-
-              <div className="md:w-2/5 p-8 md:p-12 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-800">
-                <div className="flex items-center gap-2 mb-4">
-                  <FiTerminal className="text-cyan-500" />
-                  <span className="text-cyan-500 font-mono text-[10px] uppercase tracking-widest">
-                    CaseStudy_Report
-                  </span>
-                </div>
-                <h2 className="text-3xl font-bold mb-4 text-white leading-tight">
-                  {selected.title}
-                </h2>
-                <div className="mb-8 max-h-62.5 overflow-y-auto pr-2 custom-scrollbar text-slate-400 text-sm leading-relaxed prose prose-invert prose-sm">
-                  {selected.caseStudy ? (
-                    <PortableText value={selected.caseStudy} />
-                  ) : (
-                    <p>No CaseStudy provided.</p>
-                  )}
-                </div>
-                <a
-                  href={selected.projectLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-4 bg-cyan-500 text-slate-950 font-bold rounded-2xl hover:bg-white transition-all flex items-center justify-center gap-2 active:scale-95"
-                >
-                  Visit Deployment <FiExternalLink />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

@@ -146,7 +146,7 @@ export default function ContactForm() {
             {/* ROW 2: SPECS */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
               <div className="group relative">
-                <label className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-purple-400 transition-colors">
+                <label htmlFor="project-type" className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-purple-400 transition-colors">
                   Project_Type
                 </label>
                 <div className="relative h-12 border-b border-slate-700 group-focus-within:border-purple-500 transition-colors duration-300">
@@ -209,7 +209,7 @@ export default function ContactForm() {
               </div>
 
               <div className="group relative">
-                <label className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-emerald-400 transition-colors">
+                <label htmlFor="budget-estimate" className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-emerald-400 transition-colors">
                   Budget_Estimate
                 </label>
                 <div className="h-12 flex items-center border-b border-slate-700 group-focus-within:border-emerald-500 transition-colors duration-300">
@@ -302,6 +302,7 @@ export default function ContactForm() {
             {/* SUBMIT BUTTON */}
             <div className="flex justify-center pt-4">
               <button
+                aria-label="Submit Form"
                 disabled={isPending}
                 className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 px-10 rounded-xl flex items-center gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-900/20"
               >

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
       "I engineer high-performance web applications and SaaS platforms. View my digital vault.",
     type: "website",
     locale: "en_IN",
-    url : "https://durgeshdev.in/"
+    url: "https://durgeshdev.in/",
   },
 
   robots: {
@@ -56,7 +56,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950`}
       >
-        {children}
+        <main>{children}</main>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <LazyGA gaId={process.env.NEXT_PUBLIC_GA_ID} />
         )}

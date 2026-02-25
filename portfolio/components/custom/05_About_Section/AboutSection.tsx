@@ -28,9 +28,7 @@ export default function About() {
       id="about"
       className="min-h-screen w-full bg-slate-950 py-32 px-6 relative overflow-hidden flex items-center"
     >
-      {/* 1. AMBIENT BACKGROUND */}
       <div className="absolute top-0 right-0 w-150 h-150 bg-cyan-900/20 rounded-full blur-[150px] pointer-events-none opacity-50" />
-      {/* Subtle Grid pattern behind everything */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[40px_40px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
@@ -42,7 +40,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           className="lg:col-span-5 relative"
         >
-          {/* LAYER A: The Photo "Hardware" */}
+          {/* Photo  */}
           <motion.div
             variants={itemVariants}
             onClick={() => setIsClicked(!isClicked)}
@@ -50,13 +48,13 @@ export default function About() {
           >
             <Image
               src="https://images.pexels.com/photos/35031430/pexels-photo-35031430.jpeg"
-              alt="Aditya - System Architect"
+              alt="Durgesh - System Architect"
               fill
               className={`${isClicked ? `grayscale-0` : `grayscale`} object-cover group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`}
             />
           </motion.div>
 
-          {/* LAYER B: The Floating Data Node*/}
+          {/*Floating Data */}
           <motion.div
             variants={itemVariants}
             className="absolute -bottom-10 -right-10 z-20 w-54 h-54 md:w-64 md:h-64 bg-slate-900/90 backdrop-blur-xl border border-slate-700/50 rounded-full p-6 flex flex-col justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] cursor-default"
@@ -90,11 +88,10 @@ export default function About() {
             <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-500/30 animate-[spin_20s_linear_infinite] pointer-events-none" />
           </motion.div>
 
-          {/* LAYER C: Decorative Backdrop Element */}
           <div className="absolute top-10 -left-10 w-full h-full border border-slate-800/50 rounded-[3rem] -z-10" />
         </motion.div>
 
-        {/* RIGHT SIDE: THE NARRATIVE */}
+        {/* RIGHT SIDE: NARRATIVE */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -102,7 +99,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           className="lg:col-span-7 pl-0 lg:pl-12"
         >
-          <motion.div
+          <motion.h1
             variants={itemVariants}
             className="inline-flex items-center gap-2 mb-6"
           >
@@ -110,7 +107,7 @@ export default function About() {
             <span className="text-cyan-500 font-mono text-xs uppercase tracking-[0.3em]">
               About The Architect
             </span>
-          </motion.div>
+          </motion.h1>
 
           <motion.h2
             variants={itemVariants}
