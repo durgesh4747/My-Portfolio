@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     url: "https://durgeshdev.in/",
     images: [
       {
-        url: "/opengraph-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Durgesh Sutariya | Software Architect",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Durgesh Sutariya | Software Architect",
     description:
       "Engineering high-performance web applications and SaaS platforms.",
-    images: ["/opengraph-image.jpg"],
+    images: ["/opengraph-image.png"],
   },
 
   robots: {
