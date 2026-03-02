@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://durgeshdev.in"),
   title: "Durgesh Sutariya | Software Architect & SaaS Developer",
 
   description:
@@ -33,10 +34,25 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Durgesh Sutariya | Building Scalable Digital Systems",
     description:
-      "I engineer high-performance web applications and SaaS platforms. View my digital vault.",
+      "I build high-performance web applications and SaaS platforms. View my digital vault.",
     type: "website",
     locale: "en_IN",
     url: "https://durgeshdev.in/",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Durgesh Sutariya | Software Architect",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Durgesh Sutariya | Software Architect",
+    description:
+      "Engineering high-performance web applications and SaaS platforms.",
+    images: ["/opengraph-image.jpg"],
   },
 
   robots: {
@@ -45,7 +61,6 @@ export const metadata: Metadata = {
   },
 };
 
-// OPENGRAPH IMG
 export default function RootLayout({
   children,
 }: Readonly<{
