@@ -119,12 +119,14 @@ export default function Hero() {
             className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
           >
             Hi, I&apos;m Durgesh. A Software Architect specializing in
-            high-performance web applications.
+            high-performance web applications, transforming complex business
+            ideas into scalable, production-ready systems.
           </motion.h2>
 
+          {/* Large buttons for desktop's and tabs only */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full"
+            className="hidden md:flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full"
           >
             <a
               href="#vault"
@@ -214,6 +216,36 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
+        {/* Buttons only for mobile devices */}
+        <motion.div
+          variants={itemVariants}
+          className="md:hidden flex-col flex items-center justify-center lg:justify-start mt-2 gap-4 w-full"
+        >
+          <a
+            href="#vault"
+            onClick={(e) => handleScroll(e, "vault")}
+            className="w-[90%] sm:w-auto px-8 py-4 rounded-xl bg-cyan-500 text-slate-950 font-bold 
+               hover:bg-cyan-400 active:scale-95 transition-all flex items-center justify-center gap-3 
+               shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]"
+          >
+            <FiTerminal className="text-lg" />
+            View_Case_Studies
+          </a>
+
+          <a
+            href="#contact"
+            onClick={(e) => handleScroll(e, "contact")}
+            className="w-[90%] sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 rounded-xl 
+               border border-slate-700 bg-slate-900/40 text-slate-300 font-bold 
+               hover:text-white hover:border-cyan-500/50 transition-all backdrop-blur-md"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Initialize_Project
+          </a>
+        </motion.div>
       </motion.div>
     </section>
   );

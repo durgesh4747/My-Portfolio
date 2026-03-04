@@ -121,30 +121,32 @@ export default function Vault({ projects }: WorkProps) {
                   <Image
                     src={project.thumbnail}
                     alt={project.title}
+                    unoptimized
                     fill
                     className="object-cover transition-transform duration-700 ease-out p-2 rounded-4xl"
                   />
                 </div>
 
                 {/* Text Content */}
-                <div className="p-8 pb-0">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-2xl font-bold tracking-tight text-slate-200 group-hover:text-cyan-400 transition-colors">
+                <div className="p-8 pb-0 flex-1 flex flex-col">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 md:gap-4">
+                    <h3 className="text-[18px] md:text-2xl font-bold tracking-tight text-slate-200 group-hover:text-cyan-400 transition-colors leading-tight">
                       {project.title}
                     </h3>
-                    <div className="absolute bottom-8 right-4 z-20 flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1 text-[10px] font-mono text-cyan-400 border border-slate-800">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
-                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
-                      </span>
-                      LIVE
-                    </div>
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-400 font-mono line-clamp-2">
+
+                  <p className="mt-4 pb-6 text-sm leading-relaxed text-slate-400 font-mono">
                     {project.description ||
                       "System data encrypted. Initialization sequence ready for deep-dive."}
                   </p>
                 </div>
+                  <div className="absolute flex end-2 bottom-5 md:bottom-21 items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1.5 text-[10px] font-mono text-cyan-400 border border-slate-800">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                    </span>
+                    LIVE
+                  </div>
               </Link>
             ))}
           </div>
