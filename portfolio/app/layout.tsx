@@ -38,21 +38,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://durgeshdev.in/",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Durgesh Sutariya | Software Architect",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Durgesh Sutariya | Software Architect",
     description:
       "Engineering high-performance web applications and SaaS platforms.",
-    images: ["/opengraph-image.png"],
   },
 
   robots: {
