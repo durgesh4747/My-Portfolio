@@ -34,27 +34,20 @@ export const VaultSchema = defineType({
       options: { hotspot: true },
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: "clip",
-      title: "Preview Clip (Direct Upload)",
-      type: "file",
-      description: "2-3 second .mp4 overview for hover effects.",
-      options: { accept: "video/mp4" },
-      validation: (Rule) => Rule.required(),
-    }),
+    // defineField({
+    //   name: "clip",
+    //   title: "Preview Clip (Direct Upload)",
+    //   type: "file",
+    //   description: "2-3 second .mp4 overview for hover effects.",
+    //   options: { accept: "video/mp4" },
+    //   validation: (Rule) => Rule.required(),
+    // }),
     defineField({
       name: "videoUrl",
       title: "Video Link",
       type: "url",
       description: "YouTube link for this project.",
-      // Temporarily removed .required() so you don't get blocked if you don't have a video yet
-    }),
-    defineField({
-      name: "projectLink",
-      title: "Project Link",
-      type: "url",
-      description: "External link for this project.",
-      // Temporarily removed .required() to be safe for tonight
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
@@ -93,6 +86,17 @@ export const VaultSchema = defineType({
       name: "githubLink",
       title: "GitHub Link",
       type: "url",
+    }),
+    defineField({
+      name: "lighthouse",
+      title: "Lighthouse Scores",
+      type: "object",
+      fields: [
+        { name: "performance", type: "number", title: "Performance" },
+        { name: "accessibility", type: "number", title: "Accessibility" },
+        { name: "bestPractices", type: "number", title: "Best Practices" },
+        { name: "seo", type: "number", title: "SEO" },
+      ],
     }),
   ],
 });
