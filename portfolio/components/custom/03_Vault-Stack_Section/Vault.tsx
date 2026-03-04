@@ -107,41 +107,39 @@ export default function Vault({ projects }: WorkProps) {
           <div
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex gap-6 md:gap-8 overflow-x-auto pb-12 snap-x snap-mandatory no-scrollbar"
+            className="flex gap-6 md:gap-8 overflow-x-auto pb-12 p-3 snap-x snap-mandatory no-scrollbar"
           >
             {projects.map((project) => (
               <Link
                 href={`/vault/${project.slug.current}`}
                 key={project._id}
-                className="group relative shrink-0 w-[85vw] md:w-120 snap-center flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40 transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_40px_-15px_rgba(6,182,212,0.2)]"
+                className="group relative shrink-0 w-[85vw] md:w-130 snap-center hover:scale-102 flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/40 transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_40px_-15px_rgba(6,182,212,0.2)]"
               >
                 {/* Image Section */}
-                <div className="relative h-64 md:h-72 w-full overflow-hidden border-b border-slate-800">
-                  <div className="absolute inset-0 z-10 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="relative h-52 md:h-72 w-full overflow-hidden border-b border-slate-800 scale-105">
+                  <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-500" />
                   <Image
                     src={project.thumbnail}
+                    unoptimized
                     alt={project.title}
                     fill
-                    className="object-cover grayscale transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
+                    className="object-cover transition-transform duration-700 ease-out p-2 rounded-4xl"
                   />
-                  <div className="absolute top-4 right-4 z-20 flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1 text-[10px] font-mono text-cyan-400 border border-slate-800">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
-                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
-                    </span>
-                    LIVE
-                  </div>
                 </div>
 
                 {/* Text Content */}
-                <div className="p-8">
+                <div className="p-8 pb-0">
                   <div className="flex items-center justify-between">
                     <h3 className="text-2xl font-bold tracking-tight text-slate-200 group-hover:text-cyan-400 transition-colors">
                       {project.title}
                     </h3>
-                    {/* <span className="text-slate-500 transition-transform duration-300 group-hover:translate-x-2 group-hover:text-cyan-400">
-                      
-                    </span> */}
+                    <div className="absolute bottom-8 right-4 z-20 flex items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1 text-[10px] font-mono text-cyan-400 border border-slate-800">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                      </span>
+                      LIVE
+                    </div>
                   </div>
                   <p className="mt-4 text-sm leading-relaxed text-slate-400 font-mono line-clamp-2">
                     {project.description ||
