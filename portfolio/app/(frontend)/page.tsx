@@ -12,7 +12,6 @@ export interface Project {
   title: string;
   slug: { current: string };
   thumbnail: string;
-  clip: string;
   description: string;
 }
 
@@ -22,7 +21,6 @@ const query = `*[_type == "work"] | order(order asc)[0...3] {
   title,
   slug,
   "thumbnail":thumbnail.asset->url,
-  "clip":clip.asset->url,
   description,
 }`;
 

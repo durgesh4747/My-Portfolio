@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import {
-  FiArrowRight,
   FiTerminal,
   FiSearch,
   FiLayers,
@@ -17,19 +16,27 @@ export default function Hero() {
 
   useEffect(() => {
     const fullLog = [
-      "Establishing secure connection...",
-      "Loading project environment...",
-      "Routing traffic protocols...",
-      "Architecture verified.",
-      "Status: READY FOR DEPLOYMENT.",
-      "Post-launch support: Active.",
+      "Establishing secure handshake...",
+      "Loading scalable environment...",
+      "Optimizing data architecture...",
+      "Audit: 100/100 Core Web Vitals.",
+      "Status: PRODUCTION_READY.",
+      "System Monitoring: ACTIVE.",
     ];
 
-    fullLog.forEach((line, i) => {
-      setTimeout(() => {
-        setTerminalLines((prev) => [...prev, line]);
-      }, 700 * i);
-    });
+    setTerminalLines([]);
+
+    let currentLine = 0;
+    const interval = setInterval(() => {
+      if (currentLine < fullLog.length) {
+        setTerminalLines((prev) => [...prev, fullLog[currentLine]]);
+        currentLine++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 700);
+
+    return () => clearInterval(interval);
   }, []);
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -117,24 +124,31 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full"
           >
             <a
               href="#vault"
               onClick={(e) => handleScroll(e, "vault")}
-              className="px-8 py-4 rounded-xl bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 active:scale-95 flex items-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-cyan-500 text-slate-950 font-bold 
+               hover:bg-cyan-400 active:scale-95 transition-all flex items-center justify-center gap-3 
+               shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]"
             >
-              <FiTerminal />
-              View_Work
+              <FiTerminal className="text-lg" />
+              View_Case_Studies
             </a>
 
             <a
-              href="#services"
-              onClick={(e) => handleScroll(e, "services")}
-              className="group flex items-center gap-2 px-8 py-4 rounded-xl border border-slate-700 bg-slate-900/50 text-slate-300 font-bold hover:text-white hover:bg-slate-800"
+              href="#contact"
+              onClick={(e) => handleScroll(e, "contact")}
+              className="w-full sm:w-auto group flex items-center justify-center gap-3 px-8 py-4 rounded-xl 
+               border border-slate-700 bg-slate-900/40 text-slate-300 font-bold 
+               hover:text-white hover:border-cyan-500/50 transition-all backdrop-blur-md"
             >
-              See How I Work
-              <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              Initialize_Project
             </a>
           </motion.div>
         </div>
@@ -146,7 +160,7 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 p-5 flex flex-col h-56"
+            className="rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-blue-500/50 md:border-slate-800 hover:border-blue-500/50 hover:scale-101 p-5 flex flex-col h-56"
           >
             <div className="flex items-center gap-2 text-slate-400 font-mono text-xs mb-3">
               <FiTerminal /> server_log.sh
@@ -156,7 +170,6 @@ export default function Hero() {
               {terminalLines.map((line, i) => (
                 <div key={i} className="flex gap-2">
                   <span className="text-slate-600">❯</span>
-
                   {line}
                 </div>
               ))}
@@ -167,7 +180,7 @@ export default function Hero() {
 
           <motion.div
             variants={itemVariants}
-            className="rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 p-6 flex flex-col h-40 md:h-48 shadow-2xl relative overflow-hidden group hover:border-blue-500/30 transition-colors"
+            className="rounded-2xl bg-slate-900/60 backdrop-blur-xl border p-6 flex flex-col h-40 md:h-48 shadow-2xl relative overflow-hidden group border-blue-500/50 md:border-slate-800 hover:border-blue-500/50 hover:scale-101 transition-colors"
           >
             <div className="text-slate-400 font-mono text-[10px] md:text-xs flex items-center gap-2 mb-2">
               <FiTarget className="text-blue-400" /> Proven Workflow
@@ -176,7 +189,7 @@ export default function Hero() {
             <div className="relative flex-1 flex items-center justify-between px-2 md:px-6 mt-2">
               {/* bg line */}
               <div className="workflow-line">
-              <div className="workflow-packet" />
+                <div className="workflow-packet" />
               </div>
 
               {[
