@@ -120,7 +120,6 @@ export default function Vault({ projects }: WorkProps) {
                   <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-transparent transition-colors duration-500" />
                   <Image
                     src={project.thumbnail}
-                    unoptimized
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-700 ease-out p-2 rounded-4xl"
