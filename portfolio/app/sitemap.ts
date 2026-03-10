@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const projectUrls: MetadataRoute.Sitemap = projects.map(
     (project: { slug: string; _updatedAt: string }) => ({
-      url: `https://durgeshdev.in/vault/${project.slug}`,
+      url: `https://www.durgeshdev.in/vault/${project.slug}`,
       lastModified: new Date(project._updatedAt),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -20,13 +20,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticUrls: MetadataRoute.Sitemap = [
     {
-      url: "https://durgeshdev.in",
+      url: "https://www.durgeshdev.in",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
-      url: "https://durgeshdev.in/inventory",
+      url: "https://www.durgeshdev.in/inventory",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.5,
