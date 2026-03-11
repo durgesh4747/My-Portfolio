@@ -140,10 +140,10 @@ export default function Vault({ projects }: WorkProps) {
                       "System data encrypted. Initialization sequence ready for deep-dive."}
                   </p>
                 </div>
-                  <div className="absolute flex end-2 bottom-5 md:bottom-21 items-center gap-2 rounded-full bg-slate-950/80 px-3 py-1.5 text-[10px] font-mono text-cyan-400 border border-slate-800">
-                    <span className="relative flex h-1.5 w-1.5">
+                  <div className="absolute flex end-2 top-2 md:bottom-auto items-center gap-1 md:gap-2 rounded-full bg-slate-950/90 md:bg-slate-950/80 px-2 py-1 md:px-3 md:py-1.5 text-[6px] md:text-[10px] font-mono text-cyan-400 border border-slate-800">
+                    <span className="relative flex h-1 w-1 md:h-1.5 md:w-1.5">
                       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75"></span>
-                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-500"></span>
+                      <span className="relative inline-flex h-1 w-1 md:h-1.5 md:w-1.5 rounded-full bg-cyan-500"></span>
                     </span>
                     LIVE
                   </div>
