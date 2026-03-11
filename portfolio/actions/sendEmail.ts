@@ -79,7 +79,7 @@ export const sendEmail = async (
 
     const { error } = await resend.emails.send({
       from: "Portfolio Contact <contact@durgeshdev.in>",
-      to: "durgeshsutariya07@gmail.com",
+      to: "durgesh@durgeshdev.in",
       replyTo: email,
       subject: `New Message from ${name}`,
       react: emailContent,
