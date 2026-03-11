@@ -104,14 +104,14 @@ export default function Footer() {
           <div className="space-y-3">
             <div className="w-full group flex items-center justify-between p-4 rounded-xl border border-slate-800/50 bg-slate-900/20 hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-sm">
               <a
-                href="mailto:durgeshsutariya07@gmail.com"
+                href="mailto:durgesh@durgeshdev.in"
                 className="flex flex-col items-start no-underline"
               >
                 <span className="text-[9px] text-slate-500 uppercase mb-1">
                   Business Mail
                 </span>
                 <span className="text-[11px] md:text-xs font-mono text-slate-300 group-hover:text-white transition-colors">
-                  durgeshsutariya07@gmail.com
+                  durgesh@durgeshdev.in
                 </span>
               </a>
 
