@@ -15,7 +15,7 @@ export interface Project {
   description: string;
 }
 
-const query = `*[_type == "work"] | order(order asc)[0...3] {
+const query = `*[_type == "work"] | order(order asc)[0...5] {
   _id,
   order,
   title,
