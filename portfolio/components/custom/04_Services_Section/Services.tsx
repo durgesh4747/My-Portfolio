@@ -33,26 +33,26 @@ export default function Services() {
 
   const services = [
     {
-      title: "High-Performance Frontends",
+      title: "High Velocity User Experiences",
 
       points: [
-        "Lightning-fast load times using modern frameworks.",
+        "Instant load times that capture lead attention immediately.",
 
-        "Pixel-perfect, responsive designs for any screen size.",
+        "Precision-engineered designs that work flawlessly on every device.",
 
-        "SEO-optimized architecture for maximum search visibility.",
+        "Google-standard optimization to maximize your online visibility.",
       ],
     },
 
     {
-      title: "Custom SaaS & Web Apps",
+      title: "Business SaaS & Web Apps",
 
       points: [
-        "Robust backend logic and secure database structuring.",
+        "Robust logic designed to handle your specific business workflows.",
 
-        "Custom API development and seamless third-party integrations.",
+        "Seamless integration with the tools your team already uses.",
 
-        "Scalable architecture built to handle user growth.",
+        "Enterprise-grade stability built to support long-term growth.",
       ],
     },
 
@@ -60,11 +60,11 @@ export default function Services() {
       title: "Headless CMS & Dashboards",
 
       points: [
-        "Custom admin panels for effortless content management.",
+        "Custom admin panels for effortless content updates.",
 
-        "Decoupled architecture for superior speed and security.",
+        "Decoupled architecture for superior security and protection",
 
-        "Easy media and data updates without touching a single line of code.",
+        "Full control over your data without needing a developer for every change.",
       ],
     },
   ];

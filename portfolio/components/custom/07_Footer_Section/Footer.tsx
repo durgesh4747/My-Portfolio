@@ -90,9 +90,9 @@ export default function Footer() {
             Durgesh Sutariya<span className="text-cyan-500">.</span>
           </h2>
           <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-light">
-            A highly specialized developer engineering scalable SaaS products,
-            headless systems, and high-performance web architecture. Based in
-            Vadodara, India.
+            A Performance Architecture firm engineering high-velocity digital
+            assets and scalable infrastructure. Operating at a global standard
+            from Vadodara, India.
           </p>
         </div>
 
@@ -145,7 +145,10 @@ export default function Footer() {
                   +91 99044 10362
                 </span>
               </div>
-              <FaWhatsapp aria-label="WhatsApp" className="text-slate-600 group-hover:text-green-500 transition-colors text-lg" />
+              <FaWhatsapp
+                aria-label="WhatsApp"
+                className="text-slate-600 group-hover:text-green-500 transition-colors text-lg"
+              />
             </a>
           </div>
         </div>

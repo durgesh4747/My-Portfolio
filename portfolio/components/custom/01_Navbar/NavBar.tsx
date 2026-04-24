@@ -106,7 +106,7 @@ export default function NavBar() {
                 Durgesh <span className="hidden md:inline"> | </span>
                 <br className="md:hidden" />
                 <span className="text-slate-500 md:inline font-medium">
-                  Software Architect
+                  Performance Architect
                 </span>
               </span>
             </Link>

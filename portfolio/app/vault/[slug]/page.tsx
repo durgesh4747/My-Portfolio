@@ -77,8 +77,8 @@ export default async function ProjectPage({
             <span className="w-1 h-1 rounded-full bg-cyan-500 animate-pulse" />
             DEPLOYMENT_LOG_047
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold flex justify-center tracking-tight text-white mb-4">
-            {project.title} <span className="text-cyan-500">.</span>
+          <h1 className="text-4xl md:text-6xl font-bold flex justify-center text-center tracking-tight text-white mb-4">
+            {project.title}
           </h1>
           <p className="text-base md:text-lg flex justify-center text-center text-slate-400 leading-relaxed max-w-2xl mx-auto">
             {project.description}
