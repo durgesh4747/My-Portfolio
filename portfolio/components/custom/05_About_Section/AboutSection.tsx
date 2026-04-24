@@ -144,6 +144,27 @@ export default function About() {
               , treating every project as a production-level deployment.
             </p>
           </motion.div>
+          {/* Audits Section */}
+          <motion.h2
+            variants={itemVariants}
+            className="inline-flex items-center gap-4 mb-8"
+          >
+            <div className="flex flex-col border-l-2 border-cyan-400 pl-4">
+              <span className="text-4xl font-bold tracking-tight text-white leading-none">
+                250<span className="text-cyan-400">+</span>
+              </span>
+
+              <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold mt-1">
+                Website Performance Audits Completed
+              </span>
+            </div>
+
+            <div className="hidden md:block">
+              <span className="text-[9px] px-2 py-1 border border-white/10 bg-white/5 text-white/50 uppercase tracking-widest rounded-sm">
+                Standard: ISO-ARCH-26
+              </span>
+            </div>
+          </motion.h2>
         </motion.div>
       </div>
     </section>
