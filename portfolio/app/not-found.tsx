@@ -35,7 +35,7 @@ export default function NotFound() {
             href="/"
             className="group relative inline-flex items-center justify-center px-8 rounded-2xl py-4 font-bold text-cyan-400 transition-all duration-200 border-2 border-cyan-400 hover:bg-cyan-100 hover:text-[#020617] active:scale-95"
           >
-            <span className="relative">[ RETURN TO THE ARCHITECT ]</span>
+            <span className="relative">[ RETURN TO THE ARCHITECT&apos; PROFILE ]</span>
             <div className="absolute -inset-0.5 bg-cyan-400 opacity-0 group-hover:opacity-20 blur-sm transition duration-200"></div>
           </Link>
 
