@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { FiDatabase, FiCpu, FiMapPin } from "react-icons/fi";
+import { FiCpu, FiGlobe } from "react-icons/fi";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -61,9 +61,9 @@ export default function About() {
           >
             <div className="text-center mb-4">
               <FiCpu className="inline-block text-3xl text-cyan-500 mb-2 animate-pulse" />
-              <h4 className="text-white font-bold text-xl">System Core</h4>
+              <h4 className="text-white font-bold text-md">System Core</h4>
               <p className="text-xs text-slate-500 font-mono">
-                Durgesh :: Age 19
+                STATUS :: ENGINEERED FOR GROWTH
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 text-center">
@@ -71,16 +71,16 @@ export default function About() {
                 <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">
                   Focus
                 </p>
-                <p className="text-white font-mono text-sm flex items-center justify-center gap-1">
-                  <FiDatabase className="text-cyan-500 size-3" /> Backend
+                <p className="text-white font-mono text-[8px] md:text-[12px] flex uppercase items-center justify-center gap-1">
+                  Architecture
                 </p>
               </div>
               <div>
                 <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">
-                  Base
+                  Timezone
                 </p>
-                <p className="text-white font-mono text-sm flex items-center justify-center gap-1">
-                  <FiMapPin className="text-cyan-500 size-3" /> India
+                <p className="text-white font-mono text-[8px] md:text-[12px] flex uppercase items-center justify-center gap-1">
+                  <FiGlobe className="text-cyan-500 size-3" /> Global
                 </p>
               </div>
             </div>
@@ -113,9 +113,9 @@ export default function About() {
             variants={itemVariants}
             className="text-5xl md:text-6xl font-bold text-white mb-8 leading-none tracking-tight"
           >
-            Engineering logic, <br /> not just{" "}
+            Engineering Results, <br /> not just{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-slate-500 to-white">
-              writing code.
+              Code
             </span>
           </motion.h2>
 
@@ -124,21 +124,22 @@ export default function About() {
             className="space-y-6 text-slate-400 text-lg leading-relaxed mb-12"
           >
             <p className="first-letter:text-3xl first-letter:text-white first-letter:font-bold first-letter:mr-1">
-              I am a 19-year-old developer who prefers the terminal over the
-              browser. While others rely on rigid templates and pixel-pushing, I
-              engineer custom data structures, highly-efficient APIs, and
-              scalable digital infrastructure.
+              I am a Performance Architect specializing in high-stakes digital
+              infrastructure for the industrial and service sectors. While
+              others build simple websites, I engineer custom, high-velocity
+              systems designed to secure market authority and drive inquiries.
             </p>
             <p>
-              My philosophy is simple: Backend First. A beautiful interface is
-              useless if the engine behind it crashes. I build secure, type-safe
-              architectures using the modern Next.js ecosystem, treating every
-              single project as a high-stakes, production-level deployment.
+              My philosophy is Infrastructure First. A beautiful interface is a
+              liability if it loses you customers due to poor performance. I
+              build secure, production-grade architectures using modern
+              technology, ensuring your digital presence is as reliable and
+              efficient as the services you provide.
             </p>
             <p>
-              Currently advancing my knowledge in{" "}
+              Dedicated to maximizing your{" "}
               <span className="text-white font-medium border-b border-cyan-500/30">
-                Computer Science
+                Commercial Efficiency
               </span>
               , treating every project as a production-level deployment.
             </p>

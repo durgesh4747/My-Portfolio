@@ -78,8 +78,8 @@ export default function ContactSection() {
             className="text-slate-400 text-lg font-light"
           >
             Have a project in mind or just want to say hi? Feel free to reach
-            out. I&apos;m currently accepting new freelance projects and
-            technical consultations.
+            out. I&apos;m currently accepting new technical
+            consultations and infrastructure partnerships.
           </motion.h3>
         </motion.div>
 

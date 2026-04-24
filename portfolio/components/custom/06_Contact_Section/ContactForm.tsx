@@ -12,7 +12,7 @@ const initialState: ContactFormState = {
 };
 
 export default function ContactForm() {
-  const [currency, setCurrency] = useState("INR");
+  const [currency, setCurrency] = useState("USD");
   const [budgetValue, setBudgetValue] = useState<string | null>(null);
   const [state, formAction, isPending] = useActionState(
     sendEmail,
@@ -146,7 +146,10 @@ export default function ContactForm() {
             {/* ROW 2: SPECS */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ">
               <div className="group relative">
-                <label htmlFor="project-type" className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-purple-400 transition-colors">
+                <label
+                  htmlFor="project-type"
+                  className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-purple-400 transition-colors"
+                >
                   Project_Type
                 </label>
                 <div className="relative h-12 border-b border-slate-700 group-focus-within:border-purple-500 transition-colors duration-300">
@@ -209,29 +212,32 @@ export default function ContactForm() {
               </div>
 
               <div className="group relative">
-                <label htmlFor="budget-estimate" className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-emerald-400 transition-colors">
+                <label
+                  htmlFor="budget-estimate"
+                  className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-emerald-400 transition-colors"
+                >
                   Budget_Estimate
                 </label>
                 <div className="h-12 flex items-center border-b border-slate-700 group-focus-within:border-emerald-500 transition-colors duration-300">
                   <div className="relative h-full flex items-center">
                     <select
                       name="currency"
-                      key={state.data?.currency || "INR"}
-                      defaultValue={state.data?.currency || "INR"}
+                      key={state.data?.currency || "USD"}
+                      defaultValue={state.data?.currency || "USD"}
                       onChange={(e) => setCurrency(e.target.value)}
                       className="h-full bg-transparent text-emerald-400 font-bold text-lg outline-none appearance-none cursor-pointer pr-6 pl-2 z-10"
                     >
-                      <option value="INR" className="bg-slate-900">
-                        INR
-                      </option>
                       <option value="USD" className="bg-slate-900">
                         USD
                       </option>
-                      <option value="EUR" className="bg-slate-900">
-                        EUR
-                      </option>
                       <option value="GBP" className="bg-slate-900">
                         GBP
+                      </option>
+                      <option value="INR" className="bg-slate-900">
+                        INR
+                      </option>
+                      <option value="EUR" className="bg-slate-900">
+                        EUR
                       </option>
                       <option value="OTHER" className="bg-slate-900">
                         OTHER
@@ -245,14 +251,14 @@ export default function ContactForm() {
                   <div className="h-6 w-[1.1px] bg-slate-700 mx-2" />
                   <div className="relative flex-1 flex items-center">
                     <span className="absolute left-0 text-emerald-400/50 font-mono text-lg pointer-events-none">
-                      {currency === "INR"
-                        ? "₹"
-                        : currency === "USD"
-                          ? "$"
-                          : currency === "EUR"
-                            ? "€"
-                            : currency === "GBP"
-                              ? "£"
+                      {currency === "USD"
+                        ? "$"
+                        : currency === "GBP"
+                          ? "£"
+                          : currency === "INR"
+                            ? "₹"
+                            : currency === "EUR"
+                              ? "€"
                               : "¤"}
                     </span>
                     <input
