@@ -122,6 +122,7 @@ export default function Vault({ projects }: WorkProps) {
                     src={project.thumbnail}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 768px) 90vw, 520px"
                     className="object-cover transition-transform duration-700 ease-out p-2 rounded-4xl"
                   />
                 </div>
