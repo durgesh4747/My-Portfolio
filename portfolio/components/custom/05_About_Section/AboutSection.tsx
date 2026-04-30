@@ -47,7 +47,7 @@ export default function About() {
             className=" relative z-10 h-112.5 w-full rounded-[3rem] overflow-hidden border-2 border-slate-800/80 bg-slate-950 group"
           >
             <Image
-              src="https://images.pexels.com/photos/35031430/pexels-photo-35031430.jpeg"
+              src="/unoptimg.png"
               alt="Durgesh - System Architect"
               fill
               className={`${isClicked ? `grayscale-0` : `grayscale`} object-cover group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`}
