@@ -50,7 +50,8 @@ export default function About() {
               src="/unoptimg.png"
               alt="Durgesh - System Architect"
               fill
-              className={`${isClicked ? `grayscale-0` : `grayscale`} object-cover group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`}
+              className={`object-cover transition-all duration-700 scale-100 group-hover:scale-105`}
+              // className={`${isClicked ? `grayscale-0` : `grayscale`} object-cover group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`}
             />
           </motion.div>
 
