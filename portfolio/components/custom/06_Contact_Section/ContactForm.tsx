@@ -50,7 +50,7 @@ export default function ContactForm() {
         {/* HEADER */}
         <div className="bg-slate-950/30 border-b border-slate-800/50 p-4 md:p-6">
           <div className="flex items-center gap-4 w-full justify-between">
-            <div className="flex gap-2">
+            <div className="flex gap-2" aria-hidden="true">
               <div className="w-3 h-3 rounded-full bg-red-500/30" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/30" />
               <div className="w-3 h-3 rounded-full bg-green-500/30" />
@@ -76,11 +76,15 @@ export default function ContactForm() {
             {/* ROW 1: IDENTITY */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               <div className="group relative">
-                <label className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-cyan-400 transition-colors">
+                <label
+                  htmlFor="client-identity"
+                  className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-cyan-400 transition-colors"
+                >
                   Client_Identity
                 </label>
                 <div className="relative">
                   <input
+                    id="client-identity"
                     type="text"
                     name="security_honeypot"
                     className="hidden"
@@ -88,12 +92,13 @@ export default function ContactForm() {
                     autoComplete="off"
                   />
                   <input
+                    id="client-identity"
                     required
                     name="name"
                     type="text"
                     defaultValue={state.data?.name || ""}
                     placeholder="Your Name"
-                    className={`w-full bg-transparent border-b py-3 text-lg text-white focus:outline-none transition-all placeholder:text-slate-600 ${
+                    className={`w-full bg-transparent border-b py-3 text-lg text-white focus:outline-none transition-all placeholder:text-slate-500 ${
                       state.errors?.name
                         ? "border-rose-500/50"
                         : "border-slate-700"
@@ -113,17 +118,21 @@ export default function ContactForm() {
               </div>
 
               <div className="group relative">
-                <label className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-cyan-400 transition-colors">
+                <label
+                  htmlFor="contact-email"
+                  className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-cyan-400 transition-colors"
+                >
                   Contact_Email
                 </label>
                 <div className="relative">
                   <input
+                    id="contact-email"
                     required
                     name="email"
                     type="email"
                     defaultValue={state.data?.email || ""}
                     placeholder="Your Email"
-                    className={`w-full bg-transparent border-b py-3 text-lg text-white focus:outline-none transition-all placeholder:text-slate-600 ${
+                    className={`w-full bg-transparent border-b py-3 text-lg text-white focus:outline-none transition-all placeholder:text-slate-500 ${
                       state.errors?.email
                         ? "border-rose-500/50"
                         : "border-slate-700"
@@ -154,7 +163,8 @@ export default function ContactForm() {
                 </label>
                 <div className="relative h-12 border-b border-slate-700 group-focus-within:border-purple-500 transition-colors duration-300">
                   <select
-                    className="w-full h-full bg-transparent text-lg text-slate-400 focus:outline-none appearance-none cursor-pointer p-2"
+                    id="project-type"
+                    className="w-full h-full bg-transparent text-lg text-slate-300 focus:outline-none appearance-none cursor-pointer p-2"
                     name="type"
                     key={state.data?.type || ""}
                     defaultValue={state.data?.type || ""}
@@ -222,6 +232,8 @@ export default function ContactForm() {
                   <div className="relative h-full flex items-center">
                     <select
                       name="currency"
+                      aria-label="select-currency"
+                      id="budget-estimate"
                       key={state.data?.currency || "USD"}
                       defaultValue={state.data?.currency || "USD"}
                       onChange={(e) => setCurrency(e.target.value)}
@@ -250,7 +262,7 @@ export default function ContactForm() {
                   </div>
                   <div className="h-6 w-[1.1px] bg-slate-700 mx-2" />
                   <div className="relative flex-1 flex items-center">
-                    <span className="absolute left-0 text-emerald-400/50 font-mono text-lg pointer-events-none">
+                    <span className="absolute left-0 text-emerald-400 font-mono text-lg pointer-events-none">
                       {currency === "USD"
                         ? "$"
                         : currency === "GBP"
@@ -288,15 +300,19 @@ export default function ContactForm() {
 
             {/* ROW 3: MESSAGE */}
             <div className="group relative">
-              <label className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-yellow-400 transition-colors">
+              <label
+                htmlFor="message"
+                className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-yellow-400 transition-colors"
+              >
                 Execution_Plan
               </label>
               <textarea
                 rows={4}
+                id="message"
                 name="message"
                 defaultValue={state.data?.message || ""}
                 placeholder="Describe system requirements..."
-                className="w-full bg-slate-950/20 border border-slate-700/50 rounded-xl p-4 text-white focus:outline-none transition-all placeholder:text-slate-600 resize-none"
+                className="w-full bg-slate-950/20 border border-slate-700/50 rounded-xl p-4 text-white focus:outline-none transition-all placeholder:text-slate-500 resize-none"
               />
               {state.errors?.message && (
                 <p className="text-rose-500 text-[10px] font-mono uppercase mt-1">
@@ -308,7 +324,7 @@ export default function ContactForm() {
             {/* SUBMIT BUTTON */}
             <div className="flex justify-center pt-4">
               <button
-                aria-label="Submit Form"
+                aria-label="Send-Project-Inquiry"
                 disabled={isPending}
                 className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 px-10 rounded-xl flex items-center gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-900/20"
               >
