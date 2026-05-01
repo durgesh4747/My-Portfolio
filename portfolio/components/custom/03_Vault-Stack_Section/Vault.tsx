@@ -64,6 +64,7 @@ export default function Vault({ projects }: WorkProps) {
         {/* Slider Container */}
         <div className="relative">
           <button
+            aria-label="Vault-Left"
             onClick={() => scroll("left")}
             className={`absolute -left-6 top-[40%] z-40 hidden md:flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-md transition-all duration-300 ${
               canScrollLeft
@@ -84,6 +85,7 @@ export default function Vault({ projects }: WorkProps) {
           </button>
 
           <button
+            aria-label="Vault-right"
             onClick={() => scroll("right")}
             className={`absolute -right-6 top-[40%] z-40 hidden md:flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 backdrop-blur-md transition-all duration-300 ${
               canScrollRight
