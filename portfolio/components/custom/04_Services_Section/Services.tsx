@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import './Services.module.css'
 import { motion, Variants } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
 
