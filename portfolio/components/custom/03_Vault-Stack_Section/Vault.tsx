@@ -57,7 +57,7 @@ export default function Vault({ projects }: WorkProps) {
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             The Digital Vault
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto font-mono text-sm">
+          <p className="text-slate-300 max-w-xl mx-auto font-mono text-sm">
             Technical architecture and production-grade deployments.
           </p>
         </div>
@@ -163,7 +163,7 @@ export default function Vault({ projects }: WorkProps) {
             </div>
 
             <p
-              className={`text-[10px] font-mono text-slate-600 uppercase tracking-[0.2em] md:hidden transition-opacity duration-300 ${
+              className={`text-[10px] font-mono text-slate-300 uppercase tracking-[0.2em] md:hidden transition-opacity duration-300 ${
                 canScrollRight ? "opacity-100" : "opacity-0"
               }`}
             >
