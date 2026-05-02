@@ -47,10 +47,10 @@ export default function About() {
             className=" relative z-10 h-112.5 w-full rounded-[3rem] overflow-hidden border-2 border-slate-800/80 bg-slate-950 group"
           >
             <Image
-              src="/unoptimg.png"
+              src="/aboutimg.webp"
               alt="Durgesh - System Architect"
               fill
-              className={`object-cover transition-all duration-700 scale-100 group-hover:scale-105`}
+              className={`${isClicked ? `grayscale-0` : `grayscale`} object-cover transition-all duration-700 scale-100`}
               // className={`${isClicked ? `grayscale-0` : `grayscale`} object-cover group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100`}
             />
           </motion.div>

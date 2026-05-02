@@ -47,6 +47,7 @@ function TechItem({ tech }: { tech: (typeof techStack)[0] }) {
     >
       {/* Icon's */}
       <span
+        aria-hidden="true"
         className="
         text-3xl md:text-4xl transition-all duration-500
 
@@ -65,9 +66,9 @@ function TechItem({ tech }: { tech: (typeof techStack)[0] }) {
         text-sm md:text-base font-mono font-medium uppercase tracking-tighter
         transition-all duration-500
 
-        text-(--active-color) opacity-70
+        text-(--active-color) opacity-90
 
-        lg:text-slate-600 lg:opacity-50
+        lg:text-slate-300 lg:opacity-100
         lg:group-hover:text-(--active-color)
         lg:group-hover:opacity-100
         "

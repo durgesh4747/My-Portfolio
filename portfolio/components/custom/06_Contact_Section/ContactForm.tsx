@@ -326,14 +326,14 @@ export default function ContactForm() {
               <button
                 aria-label="Send-Project-Inquiry"
                 disabled={isPending}
-                className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-4 px-10 rounded-xl flex items-center gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-900/20"
+                className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-4 px-10 rounded-xl flex items-center gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-900/20"
               >
                 {isPending ? (
                   <span className="font-semibold">Processing...</span>
                 ) : (
                   <>
-                    <span>Initialize_Project()</span>
-                    <Send size={18} />
+                    <span className="text-white">Initialize_Project()</span>
+                    <Send size={18} aria-hidden="true" />
                   </>
                 )}
               </button>
