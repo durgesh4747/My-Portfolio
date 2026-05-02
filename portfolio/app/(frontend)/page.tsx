@@ -1,10 +1,6 @@
 import Hero from "@/components/custom/02_Hero_Section/Hero";
-import Vault from "@/components/custom/03_Vault-Stack_Section/Vault";
-import TechStack from "@/components/custom/03_Vault-Stack_Section/TechStack";
-import Services from "@/components/custom/04_Services_Section/Services";
-import About from "@/components/custom/05_About_Section/AboutSection";
-import ContactSection from "@/components/custom/06_Contact_Section/ContactSection";
 import { client } from "@/sanity/lib/client";
+import dynamic from "next/dynamic";
 
 export interface Project {
   _id: string;
@@ -23,6 +19,23 @@ const query = `*[_type == "work"] | order(order asc)[0...5] {
   "thumbnail":thumbnail.asset->url,
   description,
 }`;
+
+// Lazy-loading everything below the fold to maintain the performance.
+const Vault = dynamic(
+  () => import("@/components/custom/03_Vault-Stack_Section/Vault"),
+);
+const TechStack = dynamic(
+  () => import("@/components/custom/03_Vault-Stack_Section/TechStack"),
+);
+const Services = dynamic(
+  () => import("@/components/custom/04_Services_Section/Services"),
+);
+const About = dynamic(
+  () => import("@/components/custom/05_About_Section/AboutSection"),
+);
+const ContactSection = dynamic(
+  () => import("@/components/custom/06_Contact_Section/ContactSection"),
+);
 
 export const revalidate = 60;
 export default async function Home() {

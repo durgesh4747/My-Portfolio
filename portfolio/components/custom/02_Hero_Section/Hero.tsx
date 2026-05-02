@@ -104,25 +104,22 @@ export default function Hero() {
         {/* LEFT */}
 
         <div className="lg:col-span-7 text-center lg:text-left">
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6"
-          >
+          <h1 className="animate-hero-fade text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
             I Engineer High-Velocity{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
-             Digital Assets
+              Digital Assets
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.h2
-            variants={itemVariants}
-            className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
+          <h2
+            style={{ animationDelay: "0.2s" }}
+            className="animate-hero-fade max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
           >
-            Hi, I&apos;m Durgesh Sutariya. A
-            Performance Architect building lightning-fast systems that turn
-            first-time visitors into high-value clients. I transform complex
-            business goals into secure, production-ready infrastructure.
-          </motion.h2>
+            Hi, I&apos;m Durgesh Sutariya. A Performance Architect building
+            lightning-fast systems that turn first-time visitors into high-value
+            clients. I transform complex business goals into secure,
+            production-ready infrastructure.
+          </h2>
 
           {/* Large buttons for desktop's and tabs only */}
           <motion.div
