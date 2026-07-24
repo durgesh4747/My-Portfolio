@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { FiCpu, FiGlobe } from "react-icons/fi";
+import { FiCpu } from "react-icons/fi";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -62,9 +62,9 @@ export default function About() {
           >
             <div className="text-center mb-4">
               <FiCpu className="inline-block text-3xl text-cyan-500 mb-2 animate-pulse" />
-              <h4 className="text-white font-bold text-md">System Core</h4>
-              <p className="text-xs text-slate-500 font-mono">
-                STATUS :: ENGINEERED FOR GROWTH
+              <h4 className="text-white font-bold text-md mb-2">System Core</h4>
+              <p className="text-xs text-slate-500 font-mono md:text-[11px]">
+                STATUS :: AVAILABLE FOR PROJECTS
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4 text-center">
@@ -72,16 +72,16 @@ export default function About() {
                 <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">
                   Focus
                 </p>
-                <p className="text-white font-mono text-[8px] md:text-[12px] flex uppercase items-center justify-center gap-1">
-                  Architecture
+                <p className="text-white font-mono text-[8px] md:text-[10px] flex uppercase items-center justify-center gap-1">
+                  Web Performance
                 </p>
               </div>
               <div>
                 <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">
                   Timezone
                 </p>
-                <p className="text-white font-mono text-[8px] md:text-[12px] flex uppercase items-center justify-center gap-1">
-                  <FiGlobe className="text-cyan-500 size-3" /> Global
+                <p className="text-white font-mono text-[8px] md:text-[10px] flex uppercase items-center justify-center gap-1">
+                  IST (UK-friendly hours)
                 </p>
               </div>
             </div>
@@ -104,9 +104,9 @@ export default function About() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 mb-6"
           >
-            <span className="w-8 h-0.5 bg-cyan-500"></span>
-            <span className="text-cyan-500 font-mono text-xs uppercase tracking-[0.3em]">
-              About The Architect
+            {/* <span className="w-8 h-0.5 bg-cyan-500"></span> */}
+            <span className="text-cyan-500 font-mono text-xs uppercase md:ml-2 tracking-[0.3em]">
+              About — The Architect
             </span>
           </motion.h1>
 
@@ -125,24 +125,18 @@ export default function About() {
             className="space-y-6 text-slate-400 text-lg leading-relaxed mb-12"
           >
             <p className="first-letter:text-3xl first-letter:text-white first-letter:font-bold first-letter:mr-1">
-              I am a Performance Architect specializing in high-stakes digital
-              infrastructure for the industrial and service sectors. While
-              others build simple websites, I engineer custom, high-velocity
-              systems designed to secure market authority and drive inquiries.
+              I &apos;m a Performance Architect specializing in websites for
+              trade and service businesses — solar, electrical, and industrial
+              contractors across the UK. My job is simple: make sure your
+              website loads fast, works flawlessly on mobile, and turns visitors
+              into inquiries instead of losing them.
             </p>
             <p>
-              My philosophy is Infrastructure First. A beautiful interface is a
-              liability if it loses you customers due to poor performance. I
-              build secure, production-grade architectures using modern
-              technology, ensuring your digital presence is as reliable and
-              efficient as the services you provide.
-            </p>
-            <p>
-              Dedicated to maximizing your{" "}
-              <span className="text-white font-medium border-b border-cyan-500/30">
-                Commercial Efficiency
-              </span>
-              , treating every project as a production-level deployment.
+              A beautiful website is worthless if it&apos;s slow enough to lose
+              you customers.
+              <br /> I build fast, secure, reliable sites using modern
+              technology — so your online presence is as dependable as the work
+              you actually deliver
             </p>
           </motion.div>
           {/* Audits Section */}
@@ -152,17 +146,11 @@ export default function About() {
           >
             <div className="flex flex-col border-l-2 border-cyan-400 pl-4">
               <span className="text-4xl font-bold tracking-tight text-white leading-none">
-                250<span className="text-cyan-400">+</span>
+                500<span className="text-cyan-400">+</span>
               </span>
 
-              <span className="text-[10px] uppercase tracking-[0.3em] text-cyan-400 font-semibold mt-1">
-                Website Performance Audits Completed
-              </span>
-            </div>
-
-            <div className="hidden md:block">
-              <span className="text-[9px] px-2 py-1 border border-white/10 bg-white/5 text-white/50 uppercase tracking-widest rounded-sm">
-                Standard: ISO-ARCH-26
+              <span className="text-[10px] uppercase tracking-[0.2rem] text-cyan-400 font-semibold mt-1">
+                UK Businesses Researched for Performance Issues
               </span>
             </div>
           </motion.h2>

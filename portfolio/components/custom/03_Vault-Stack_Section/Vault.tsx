@@ -49,16 +49,17 @@ export default function Vault({ projects }: WorkProps) {
     >
       <div className="max-w-7xl mx-auto">
         <div className="relative z-10 max-w-7xl mx-auto text-center mb-20">
-          <div className="inline-block py-1 px-3 border border-cyan-500/20 bg-cyan-500/5 rounded-full mb-4">
-            <span className="text-cyan-500 font-mono text-[10px] tracking-[0.3em] uppercase">
-              Archive_v2.0
+          <div className="inline-block py-1 px-3 font-semibold mb-4">
+            <span className="text-cyan-500 text-[10px] tracking-[0.3em] uppercase">
+              Selected Work
             </span>
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-            The Digital Vault
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            Case Studies
           </h2>
-          <p className="text-slate-300 max-w-xl mx-auto font-mono text-sm">
-            Technical architecture and production-grade deployments.
+          <p className="text-slate-300 max-w-xl mx-auto text-sm">
+            A look at how I approach speed, structure, and reliability across
+            different kinds of projects
           </p>
         </div>
         {/* Slider Container */}

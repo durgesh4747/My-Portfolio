@@ -1,3 +1,6 @@
+import FAQ from "@/components/custom/00_FAQ_Section/FAQ";
+import Pricing from "@/components/custom/00_Pricing_Section/Pricing";
+import Testimonials from "@/components/custom/00_Testimonial_Section/Testiominials";
 import Hero from "@/components/custom/02_Hero_Section/Hero";
 import { client } from "@/sanity/lib/client";
 import dynamic from "next/dynamic";
@@ -44,10 +47,13 @@ export default async function Home() {
     <div>
       <Hero />
       <Vault projects={projects} />
+      <Testimonials />
       <TechStack />
       <Services />
+      <Pricing />
       <About />
       <ContactSection />
+      <FAQ />
     </div>
   );
 }

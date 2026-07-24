@@ -90,16 +90,15 @@ export default function Footer() {
             Durgesh Sutariya<span className="text-cyan-500">.</span>
           </h2>
           <p className="text-slate-400 text-sm leading-relaxed max-w-xs font-light">
-            A Performance Architecture firm engineering high-velocity digital
-            assets and scalable infrastructure. Operating at a global standard
-            from Vadodara, India.
+            Independent Performance Architect helping UK trade and service
+            businesses fix slow, outdated websites. Based in Vadodara, India.
           </p>
         </div>
 
         {/* MIDDLE-CONTACT */}
         <div className="p-8 md:p-12 border-b md:border-b-0 border-slate-900/50 bg-slate-900/5 flex flex-col justify-center">
           <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
-            Contact_Direct
+            Direct Contact
           </p>
           <div className="space-y-3">
             <div className="w-full group flex items-center justify-between p-4 rounded-xl border border-slate-800/50 bg-slate-900/20 hover:border-cyan-500/40 transition-all duration-300 backdrop-blur-sm">
@@ -154,9 +153,9 @@ export default function Footer() {
         </div>
 
         {/* RIGHT-SOCIALS */}
-        <div className="p-8 md:p-12 flex flex-col justify-center">
-          <p className="text-slate-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
-            Social_Links
+        <div className="p-8 md:p-10 flex flex-col justify-center">
+          <p className="text-slate-500 text-left text-[10px] font-bold uppercase tracking-[0.3em] mb-8">
+            Social Links
           </p>
           <div className="grid grid-cols-1 gap-1">
             {socials.map((social) => (

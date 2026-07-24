@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { Send, Terminal, ChevronDown } from "lucide-react";
+import { Send, ChevronDown } from "lucide-react";
 import { ContactFormState, sendEmail } from "@/actions/sendEmail";
 import { toast } from "sonner";
 
@@ -12,7 +12,7 @@ const initialState: ContactFormState = {
 };
 
 export default function ContactForm() {
-  const [currency, setCurrency] = useState("USD");
+  const [currency, setCurrency] = useState("GBP");
   const [budgetValue, setBudgetValue] = useState<string | null>(null);
   const [state, formAction, isPending] = useActionState(
     sendEmail,
@@ -55,9 +55,8 @@ export default function ContactForm() {
               <div className="w-3 h-3 rounded-full bg-yellow-500/30" />
               <div className="w-3 h-3 rounded-full bg-green-500/30" />
             </div>
-            <div className="font-mono text-xs text-cyan-400 flex items-center gap-2 bg-cyan-500/10 p-2 rounded-2xl border border-cyan-500/20">
-              <Terminal size={12} />
-              <span>ContactMe_Protocol</span>
+            <div className="font-mono text-xs p-2 text-cyan-400 flex items-center gap-2 bg-cyan-500/10 rounded-2xl border border-cyan-500/20">
+              <span>Get In Touch</span>
             </div>
           </div>
         </div>
@@ -80,7 +79,7 @@ export default function ContactForm() {
                   htmlFor="client-identity"
                   className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-cyan-400 transition-colors"
                 >
-                  Client_Identity
+                  Your Name
                 </label>
                 <div className="relative">
                   <input
@@ -122,7 +121,7 @@ export default function ContactForm() {
                   htmlFor="contact-email"
                   className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-cyan-400 transition-colors"
                 >
-                  Contact_Email
+                  Email Address
                 </label>
                 <div className="relative">
                   <input
@@ -159,7 +158,7 @@ export default function ContactForm() {
                   htmlFor="project-type"
                   className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-purple-400 transition-colors"
                 >
-                  Project_Type
+                  Project Type
                 </label>
                 <div className="relative h-12 border-b border-slate-700 group-focus-within:border-purple-500 transition-colors duration-300">
                   <select
@@ -198,9 +197,15 @@ export default function ContactForm() {
                     </option>
                     <option
                       className="bg-slate-900 text-slate-300"
-                      value="Maintenance"
+                      value="Fix Existing Site"
                     >
                       Revamp / Fix Existing Site
+                    </option>
+                    <option
+                      className="bg-slate-900 text-slate-300"
+                      value="Maintenance/Retainer"
+                    >
+                      Site Maintenance / Ongoing Support
                     </option>
                     <option
                       className="bg-slate-900 text-slate-300"
@@ -226,7 +231,7 @@ export default function ContactForm() {
                   htmlFor="budget-estimate"
                   className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-emerald-400 transition-colors"
                 >
-                  Budget_Estimate
+                  Estimated Budget
                 </label>
                 <div className="h-12 flex items-center border-b border-slate-700 group-focus-within:border-emerald-500 transition-colors duration-300">
                   <div className="relative h-full flex items-center">
@@ -234,16 +239,16 @@ export default function ContactForm() {
                       name="currency"
                       aria-label="select-currency"
                       id="budget-estimate"
-                      key={state.data?.currency || "USD"}
-                      defaultValue={state.data?.currency || "USD"}
+                      key={state.data?.currency || "GBP"}
+                      defaultValue={state.data?.currency || "GBP"}
                       onChange={(e) => setCurrency(e.target.value)}
                       className="h-full bg-transparent text-emerald-400 font-bold text-lg outline-none appearance-none cursor-pointer pr-6 pl-2 z-10"
                     >
-                      <option value="USD" className="bg-slate-900">
-                        USD
-                      </option>
                       <option value="GBP" className="bg-slate-900">
                         GBP
+                      </option>
+                      <option value="USD" className="bg-slate-900">
+                        USD
                       </option>
                       <option value="INR" className="bg-slate-900">
                         INR
@@ -263,10 +268,10 @@ export default function ContactForm() {
                   <div className="h-6 w-[1.1px] bg-slate-700 mx-2" />
                   <div className="relative flex-1 flex items-center">
                     <span className="absolute left-0 text-emerald-400 font-mono text-lg pointer-events-none">
-                      {currency === "USD"
-                        ? "$"
-                        : currency === "GBP"
-                          ? "£"
+                      {currency === "GBP"
+                        ? "£"
+                        : currency === "USD"
+                          ? "$"
                           : currency === "INR"
                             ? "₹"
                             : currency === "EUR"
@@ -285,7 +290,7 @@ export default function ContactForm() {
                       onChange={(e) =>
                         setBudgetValue(formatCommas(e.target.value))
                       }
-                      placeholder="7,000 - 15,000"
+                      placeholder="500 - 3000"
                       className="w-full h-full bg-transparent pl-6 text-lg text-emerald-400 focus:outline-none placeholder:text-slate-700 font-mono"
                     />
                   </div>
@@ -304,14 +309,14 @@ export default function ContactForm() {
                 htmlFor="message"
                 className="text-xs text-white uppercase tracking-widest mb-2 block group-focus-within:text-yellow-400 transition-colors"
               >
-                Execution_Plan
+                Project Details
               </label>
               <textarea
                 rows={4}
                 id="message"
                 name="message"
                 defaultValue={state.data?.message || ""}
-                placeholder="Describe system requirements..."
+                placeholder="Describe your project..."
                 className="w-full bg-slate-950/20 border border-slate-700/50 rounded-xl p-4 text-white focus:outline-none transition-all placeholder:text-slate-500 resize-none"
               />
               {state.errors?.message && (
@@ -332,7 +337,7 @@ export default function ContactForm() {
                   <span className="font-semibold">Processing...</span>
                 ) : (
                   <>
-                    <span className="text-white">Initialize_Project()</span>
+                    <span className="text-white">Send Message</span>
                     <Send size={18} aria-hidden="true" />
                   </>
                 )}

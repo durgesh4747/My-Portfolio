@@ -69,16 +69,15 @@ export default function ContactSection() {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight"
           >
-            Initialize your{" "}
-            <span className="text-slate-500">next project.</span>
+            Start your <span className="text-slate-500">project.</span>
           </motion.h2>
           <motion.h3
             variants={itemVariants}
             className="text-slate-400 text-lg font-light"
           >
-            Have a project in mind or just want to say hi? Feel free to reach
-            out. I&apos;m currently accepting new technical consultations and
-            infrastructure partnerships.
+            Have a project in mind, or just want to ask a question? I&apos;m
+            currently taking on new clients - send me a few details and
+            I&apos;ll get back to you.
           </motion.h3>
         </motion.div>
 

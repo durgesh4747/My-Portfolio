@@ -16,10 +16,11 @@ export default function Hero() {
 
   useEffect(() => {
     const fullLog = [
+      " ",
       "Establishing secure handshake...",
       "Loading scalable environment...",
       "Optimizing data architecture...",
-      "Audit: 100/100 Core Web Vitals.",
+      "Target: 100/100 Core Web Vitals.",
       "Status: PRODUCTION_READY.",
       "System Monitoring: ACTIVE.",
     ];
@@ -105,9 +106,9 @@ export default function Hero() {
 
         <div className="lg:col-span-7 text-center lg:text-left">
           <h1 className="animate-hero-fade text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
-            I Engineer High-Velocity{" "}
+            I Build Websites that{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
-              Digital Assets
+              Turn Visitors Into Clients
             </span>
           </h1>
 
@@ -115,10 +116,11 @@ export default function Hero() {
             style={{ animationDelay: "0.2s" }}
             className="animate-hero-fade max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
           >
-            Hi, I&apos;m Durgesh Sutariya. A Performance Architect building
-            lightning-fast systems that turn first-time visitors into high-value
-            clients. I transform complex business goals into secure,
-            production-ready infrastructure.
+            I help UK trade and service businesses — solar installers,
+            electricians, contractors — fix slow, outdated websites and turn
+            them into fast, reliable ones that convert visitors into real
+            inquiries. No jargon, no disruption to how you already manage
+            things.
           </h2>
 
           {/* Large buttons for desktop's and tabs only */}
@@ -133,8 +135,8 @@ export default function Hero() {
                hover:bg-cyan-400 active:scale-95 transition-all flex items-center justify-center gap-3 
                shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]"
             >
-              <FiTerminal className="text-lg" />
-              View_Case_Studies
+              {/* <FiTerminal className="text-lg" /> */}
+              View Case Studies
             </a>
 
             <a
@@ -148,7 +150,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              Initialize_Project
+              Get in Touch
             </a>
           </motion.div>
         </div>
@@ -163,7 +165,7 @@ export default function Hero() {
             className="rounded-2xl bg-slate-900/60 backdrop-blur-xl border border-blue-500/50 md:border-slate-800 hover:border-blue-500/50 hover:scale-101 p-5 flex flex-col h-56"
           >
             <div className="flex items-center gap-2 text-slate-400 font-mono text-xs mb-3">
-              <FiTerminal /> server_log.sh
+              <FiTerminal /> server-log.sh
             </div>
 
             <div className="flex-1 font-mono text-xs text-cyan-500/80 flex flex-col gap-1 overflow-y-auto">
@@ -226,8 +228,7 @@ export default function Hero() {
                hover:bg-cyan-400 active:scale-95 transition-all flex items-center justify-center gap-3 
                shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]"
           >
-            <FiTerminal className="text-lg" />
-            View_Case_Studies
+            Case Studies
           </a>
 
           <a
@@ -241,7 +242,7 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Initialize_Project
+            Get in Touch
           </a>
         </motion.div>
       </motion.div>

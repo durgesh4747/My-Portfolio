@@ -3,7 +3,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiLink, FiFolder, FiUser, FiX, FiCpu } from "react-icons/fi";
+import {
+  FiLink,
+  FiFolder,
+  FiUser,
+  FiX,
+  FiCpu,
+  FiSunrise,
+} from "react-icons/fi";
 import { Menu, X } from "lucide-react";
 
 interface NavLinkProps {
@@ -32,10 +39,11 @@ export default function NavBar() {
       "vault",
       "services",
       "stack",
+      "pricing",
       "about",
       "contact",
     ];
-    const navIds = ["vault", "services", "about", "contact"];
+    const navIds = ["vault", "services", "pricing", "about", "contact"];
 
     const observerOptions = {
       rootMargin: "-45% 0% -45% 0%",
@@ -82,13 +90,14 @@ export default function NavBar() {
   };
 
   const navLinks = [
-    { href: "#vault", label: "Vault", icon: <FiFolder />, id: "vault" },
+    { href: "#vault", label: "Case Studies", icon: <FiFolder />, id: "vault" },
     {
       href: "#services",
       label: "Services",
       icon: <FiCpu />,
       id: "services",
     },
+    { href: "#pricing", label: "Pricing", icon: <FiSunrise />, id: "pricing" },
     { href: "#about", label: "About", icon: <FiUser />, id: "about" },
   ];
 
@@ -168,7 +177,7 @@ export default function NavBar() {
 
             <div className="flex h-full flex-col justify-center items-center px-10 text-center">
               <span className="mb-6 font-mono text-[10px] tracking-[0.4em] text-cyan-500 uppercase">
-                System_Menu
+                Menu
               </span>
 
               <ul className="flex flex-col gap-8">
@@ -217,7 +226,7 @@ export default function NavBar() {
                   onClick={() => setIsOpen(false)}
                   className="flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-4 text-xs font-mono text-slate-500 hover:text-white transition-colors"
                 >
-                  <FiX /> CANCEL_SESSION
+                  <FiX /> CANCEL
                 </button>
               </motion.div>
             </div>

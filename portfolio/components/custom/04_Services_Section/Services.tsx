@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import './Services.module.css'
+import "./Services.module.css";
 import { motion, Variants } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
 
@@ -39,31 +39,31 @@ export default function Services() {
       points: [
         "Instant load times that capture lead attention immediately.",
 
-        "Precision-engineered designs that work flawlessly on every device.",
+        "Looks and works great on every device — desktop, tablet, or phone.",
 
         "Google-standard optimization to maximize your online visibility.",
       ],
     },
 
     {
-      title: "Business SaaS & Web Apps",
+      title: "Custom Tools & Business Systems",
 
       points: [
-        "Robust logic designed to handle your specific business workflows.",
+        "Built around how your business actually operates day to day.",
 
         "Seamless integration with the tools your team already uses.",
 
-        "Enterprise-grade stability built to support long-term growth.",
+        "Reliable enough to grow with your business without slowing it down.",
       ],
     },
 
     {
-      title: "Headless CMS & Dashboards",
+      title: "Easy Content Management",
 
       points: [
         "Custom admin panels for effortless content updates.",
 
-        "Decoupled architecture for superior security and protection",
+        "Built with a security-first approach, so your data and site stay protected.",
 
         "Full control over your data without needing a developer for every change.",
       ],
@@ -107,7 +107,7 @@ export default function Services() {
         >
           <motion.h1
             variants={itemVariants}
-            className="text-cyan-500 font-mono text-xs uppercase tracking-[0.3em] mb-4"
+            className="text-cyan-500 text-xs uppercase tracking-[0.3em] mb-4"
           >
             My Expertise
           </motion.h1>
@@ -116,16 +116,16 @@ export default function Services() {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight"
           >
-            Specializing in{" "}
-            <span className="text-slate-500">modern web logic.</span>
+            Built to solve{" "}
+            <span className="text-slate-500">real business problems.</span>
           </motion.h2>
 
           <motion.h3
             variants={itemVariants}
             className="text-slate-400 text-lg max-w-2xl mx-auto"
           >
-            I focus on building engines that are as powerful as they are
-            beautiful.
+            I focus on results you can see in your inquiries, not just your
+            browser tab.
           </motion.h3>
         </motion.div>
 
