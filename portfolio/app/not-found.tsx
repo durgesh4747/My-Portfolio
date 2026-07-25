@@ -1,5 +1,5 @@
 import NavBar from "@/components/custom/01_Navbar/NavBar";
-import Footer from "@/components/custom/07_Footer_Section/Footer";
+import Footer from "@/components/custom/10_Footer_Section/Footer";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -35,7 +35,9 @@ export default function NotFound() {
             href="/"
             className="group relative inline-flex items-center justify-center px-8 rounded-2xl py-4 font-bold text-cyan-400 transition-all duration-200 border-2 border-cyan-400 hover:bg-cyan-100 hover:text-[#020617] active:scale-95"
           >
-            <span className="relative">[ RETURN TO THE ARCHITECT&apos;S PROFILE ]</span>
+            <span className="relative">
+              [ RETURN TO THE ARCHITECT&apos;S PROFILE ]
+            </span>
             <div className="absolute -inset-0.5 bg-cyan-400 opacity-0 group-hover:opacity-20 blur-sm transition duration-200"></div>
           </Link>
 
