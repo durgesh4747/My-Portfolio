@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const testimonials = [
   {
     quote:
@@ -6,7 +8,7 @@ const testimonials = [
     role: "Graphic Designer",
     tag: "Portfolio & Brand Site",
     initials: "DP",
-    href: "vault/portfolio-for-graphics-designer",
+    href: "/vault/portfolio-for-graphics-designer",
   },
   {
     quote:
@@ -15,18 +17,24 @@ const testimonials = [
     role: "Video Editor",
     tag: "Video Portfolio & CMS",
     initials: "PP",
-    href: "vault/portfolio-for-video-editor",
+    href: "/vault/portfolio-for-video-editor",
   },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#020617] py-20 px-6">
+    <section
+      className="bg-[#020617] py-20 px-6"
+      aria-labelledby="testimonials-heading"
+    >
       <div className="max-w-3xl mx-auto text-center mb-16 relative z-10">
         <span className="text-cyan-500 text-[10px] tracking-[0.3em] uppercase">
           Client Feedback
         </span>
-        <h2 className="text-3xl md:text-5xl text-white font-bold tracking-tight mb-6">
+        <h2
+          id="testimonials-heading"
+          className="text-3xl md:text-5xl text-white font-bold tracking-tight mb-6"
+        >
           What people say
         </h2>
         <p className="text-slate-300 max-w-xl mx-auto text-sm">
@@ -48,20 +56,24 @@ export default function Testimonials() {
             </p>
             <div className="flex items-center justify-between border-t pt-4 border-slate-800/60">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+                <div
+                  className="w-10 h-10 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm"
+                  aria-hidden="true"
+                >
                   {t.initials}
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-slate-500 text-xs">{t.role}</p>
+                  <p className="text-slate-400 text-xs">{t.role}</p>
                 </div>
               </div>
-              <a
+              <Link
                 href={t.href}
-                className="text-cyan-400 text-xs font-mono border border-cyan-500/30 p-2  rounded-xl px-3 py-1.5 hover:bg-cyan-500/50 hover:scale-102 transition-colors"
+                aria-label={`View project for ${t.name}`}
+                className="text-cyan-400 text-xs font-mono border border-cyan-500/30 rounded-xl px-3 py-1.5 hover:bg-cyan-500/50 hover:scale-102 transition-colors"
               >
                 View Project
-              </a>
+              </Link>
             </div>
           </div>
         ))}

@@ -20,7 +20,7 @@ export default function ContactForm() {
   );
 
   const formatCommas = (val: string) => {
-    const clean = val.replace(/[^\d-]/g, "");
+    const clean = val.replace(/[^\d\s-]/g, "");
     return clean.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
@@ -83,12 +83,13 @@ export default function ContactForm() {
                 </label>
                 <div className="relative">
                   <input
-                    id="client-identity"
+                    id="security-honeypot"
                     type="text"
                     name="security_honeypot"
                     className="hidden"
                     tabIndex={-1}
                     autoComplete="off"
+                    aria-hidden="true"
                   />
                   <input
                     id="client-identity"
@@ -238,7 +239,6 @@ export default function ContactForm() {
                     <select
                       name="currency"
                       aria-label="select-currency"
-                      id="budget-estimate"
                       key={state.data?.currency || "GBP"}
                       defaultValue={state.data?.currency || "GBP"}
                       onChange={(e) => setCurrency(e.target.value)}
@@ -281,6 +281,7 @@ export default function ContactForm() {
                     <input
                       type="text"
                       name="budget"
+                      id="budget-estimate"
                       value={
                         budgetValue ??
                         (state.data?.budget
@@ -329,7 +330,6 @@ export default function ContactForm() {
             {/* SUBMIT BUTTON */}
             <div className="flex justify-center pt-4">
               <button
-                aria-label="Send-Project-Inquiry"
                 disabled={isPending}
                 className="bg-cyan-700 hover:bg-cyan-600 text-white font-bold py-4 px-10 rounded-xl flex items-center gap-3 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-cyan-900/20"
               >

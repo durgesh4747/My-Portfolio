@@ -87,7 +87,6 @@ export default function Hero() {
       className="relative min-h-dvh w-full flex items-center justify-center bg-[#020617] overflow-hidden pt-24 pb-12 px-4 sm:px-6"
     >
       {/*  Ambient bg  */}
-
       <div className="absolute inset-0 pointer-events-none">
         <div className="ambient-glow cyan" />
 
@@ -105,7 +104,7 @@ export default function Hero() {
         {/* LEFT */}
 
         <div className="lg:col-span-7 text-center lg:text-left">
-          <h1 className="animate-hero-fade text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
+          <h1 className="md:animate-hero-fade text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
             I Build Websites that{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
               Turn Visitors Into Clients
