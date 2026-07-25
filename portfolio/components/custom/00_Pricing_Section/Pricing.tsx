@@ -71,24 +71,24 @@ export default function Pricing() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch relative z-10 ">
         {tiers.map((tier, i) => (
           <div
             key={i}
-            className={`relative flex flex-col rounded-2xl p-8 border backdrop-blur-sm transition-all duration-300 ${
+            className={`group relative flex flex-col rounded-2xl p-8 border backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] ${
               tier.highlighted
-                ? "bg-slate-900/90 border-cyan-500/50 shadow-[0_0_30px_-10px_rgba(6,182,212,0.25)]"
-                : "bg-slate-900/40 border-slate-800/80 hover:border-slate-700"
+                ? "bg-slate-900/90 border-cyan-500/50 hover:border-cyan-700/30 shadow-[0_0_30px_-10px_rgba(6,182,212,0.25)]"
+                : "bg-slate-900/50 border-slate-800/80 hover:border-slate-800/10"
             }`}
           >
             {/* Top Border Glow Line for Highlighted Card */}
             {tier.highlighted && (
-              <div className="absolute inset-x-8 top-0 h-1px bg-linear-to-r from-transparent via-cyan-400 to-transparent" />
+              <div className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-cyan-400 to-transparent" />
             )}
 
             {/* Highlight Badge */}
             {/* {tier.highlighted && (
-              <span className="absolute -top-3.5 -left-1/2 -translate-x-1/2 bg-cyan-400 text-slate-950 text-[10px] font-mono font-extrabold px-3 py-1 rounded-full tracking-wider uppercase shadow-md">
+              <span className="absolute top-9 right-2 z-50 bg-cyan-400 text-slate-950 text-[10px] font-mono font-extrabold px-2 rounded-full tracking-wider uppercase shadow-md">
                 RECOMMENDED
               </span>
             )} */}
@@ -128,12 +128,13 @@ export default function Pricing() {
             </ul>
 
             {/* Action Button */}
-            <a href="" className="cursor-pointer">
+            <a href="#contact" className="cursor-pointer scroll-smooth">
               <button
-                className={`w-full py-3 cursor-pointer rounded-xl font-semibold text-xs tracking-wide transition-all duration-200 ${
+                aria-label="Contact-Form"
+                className={`w-full py-3 cursor-pointer rounded-xl font-semibold text-xs tracking-wide transition-all duration-200 hover:border-cyan-300 ${
                   tier.highlighted
                     ? "bg-cyan-400 text-slate-950 hover:bg-cyan-300 shadow-md font-bold"
-                    : "bg-slate-800/60 text-slate-200 border border-slate-700/60 hover:bg-slate-800 hover:text-white"
+                    : "bg-slate-800/10 text-slate-200 border border-slate-700/60 hover:bg-slate-800 hover:text-white"
                 }`}
               >
                 Get Started

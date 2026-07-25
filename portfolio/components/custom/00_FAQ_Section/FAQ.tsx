@@ -4,32 +4,32 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Will this change how ite day-to-day?",
-    a: "No — for optimization work, you keep using your site exactly the same way. For a full rebuild, you'll get a simple dashboard that's easier to use than what you have now, not harder.",
+    q: "I don't have a website yet, where do we even start?",
+    a: "We start with a short conversation about what your business does and what you want visitors to do when they land on your site - get in touch, request a quote, learn about your services. From there I handle the design, build, and setup end-to-end. You don't need any technical knowledge or existing content ready to begin.",
+  },
+  {
+    q: "Will this change how I manage things day-to-day?",
+    a: "No, if I'm optimizing your current site, you keep using it exactly the same way. If it's a new build or full rebuild, you'll get a simple dashboard that's easier to use than what you have now, not harder.",
+  },
+  {
+    q: "Why pay for this instead of a cheaper £300-400 template site?",
+    a: "If you're starting fresh, a properly built site costs more upfront but is designed to actually convert visitors into inquiries, not just exist online. If you already have a site, optimizing keeps everything that already works and just fixes what's slowing you down. A cheap template site usually means starting from zero — losing any existing search rankings, content, and branding you've built up, often with a recurring monthly fee attached. ",
+  },
+  {
+    q: "How long will my project take?",
+    a: "Optimization work: 3-5 days. A new site or full rebuild: 2-3 weeks. You'll know the exact timeline for your specific project before anything starts.",
   },
   {
     q: "Do I need to change my hosting or domain?",
-    a: "In most cases, no. Optimization work happens within your current setup. If a rebuild genuinely needs a different platform, I'll explain exactly why before any changes are made.",
+    a: "If you already have a site, optimization work usually happens within your current setup - no hosting or domain changes needed. If you're starting fresh, I'll guide you through picking and setting up a domain and hosting as part of the project, so there's nothing to figure out on your own.",
   },
   {
-    q: "How long does a project take?",
-    a: "Optimization work: 3-5 days. A full rebuild: 2-3 weeks. You'll know the timeline upfront before we start.",
+    q: "I'm not very technical — will I understand what's happening?",
+    a: "Yes. I explain everything in plain terms, whether you're getting your first website or fixing an existing one — no jargon, no assuming you already know how any of this works. Any decision that needs your input gets explained simply first.",
   },
   {
-    q: "I'm not very technical — what's happening?",
-    a: "Yes. I explain everything in plain terms — no jargon, no assuming you know web development. If something needs a technical decision, I'll walk you through the options simply.",
-  },
-  {
-    q: "What if I'm not happy with the result?",
-    a: "We'll agree on what success looks like before starting, and I'll show you the before-and-after data (load times, mobile performance) so it's clear, not just a matter of opinion.",
-  },
-  {
-    q: "Do you offer ongoing suppor project's done?",
-    a: "Yes — that's what the monthly maintenance option is for, if you'd rather not think about it again. Otherwise, one-off fixes are always available too.",
-  },
-  {
-    q: "Do you offer ongoing support ect's done?",
-    a: "Yes — that's what the monthly maintenance option is for, if you'd rather not think about it again. Otherwise, one-off fixes are always available too.",
+    q: "What happens after my site is live — do you offer support",
+    a: "Yes. If you'd rather not think about it again, the monthly Ongoing Care option covers monitoring, small updates, and priority support. If you just want the option available when something comes up, one-off fixes are always on the table too — no obligation either way.",
   },
 ];
 
@@ -41,12 +41,11 @@ export default function FAQ() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(14,165,233,0.08),rgba(255,255,255,0))] pointer-events-none" />
 
       {/* Header */}
-      <div className="max-w-5xl mx-auto text-center mb-16 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/20 text-cyan-400 text-xs font-mono mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-          <span>FREQUENTLY ASKED QUESTIONS</span>
-        </div>
-        <h2 className="text-3xl md:text-5xl text-white font-extrabold tracking-tight">
+      <div className="max-w-3xl mx-auto text-center mb-16 relative z-10">
+        <span className="text-cyan-500 text-[10px] tracking-[0.3em] uppercase">
+          FREQUENTLY ASKED QUESTIONS
+        </span>
+        <h2 className="text-3xl md:text-5xl text-white font-bold tracking-tight mb-6">
           Clear Answers Upfront
         </h2>
       </div>
@@ -62,6 +61,7 @@ export default function FAQ() {
                 key={i}
                 type="button"
                 onClick={() => setActiveIndex(i)}
+                aria-label="Questions-FAQ's"
                 className={`w-full flex items-center h-10 justify-between px-4 py-3.5 rounded-xl border text-left font-mono text-xs md:text-sm transition-all duration-200 cursor-pointer select-none ${
                   isActive
                     ? "bg-slate-900 border-cyan-500/20 text-white shadow-[0_0_15px_-3px_rgba(14,165,233,0.2)]"
@@ -76,7 +76,7 @@ export default function FAQ() {
                   >
                     0{i + 1}
                   </span>
-                  <span className="truncate font-sans font-medium text-sm">
+                  <span className="truncate font-sans font-medium text-[12px]">
                     {item.q}
                   </span>
                 </div>

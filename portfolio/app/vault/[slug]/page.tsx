@@ -63,10 +63,10 @@ export default async function ProjectPage({
             <span>
               <ArrowBigLeft />
             </span>{" "}
-            BACK_TO_ARCHIVE
+            BACK_TO_SITE
           </Link>
           <span className="hidden sm:block text-[10px] font-mono text-slate-600">
-            STATUS: ENCRYPTED_ACCESS
+            STATUS: READING CASE STUDY
           </span>
         </div>
       </nav>
@@ -74,8 +74,7 @@ export default async function ProjectPage({
       <div className="max-w-5xl mx-auto px-6 pt-24 pb-20">
         <section className="mb-12">
           <div className="flex items-center justify-center gap-2 text-cyan-500 font-mono text-[10px] mb-4">
-            <span className="w-1 h-1 rounded-full bg-cyan-500 animate-pulse" />
-            DEPLOYMENT_LOG_047
+            Case Study of {project.title}
           </div>
           <h1 className="text-4xl md:text-6xl font-bold flex justify-center text-center tracking-tight text-white mb-4">
             {project.title}
@@ -101,7 +100,7 @@ export default async function ProjectPage({
           <div className="md:col-span-2 space-y-10">
             <div className="space-y-4">
               <h3 className="text-[15px] font-mono text-cyan-500 uppercase tracking-widest">
-                Case_Study
+                Case Study
               </h3>
               <div className="prose prose-invert text-[15px] prose-cyan max-w-none text-slate-400 leading-relaxed font-sans">
                 {project.caseStudy ? (
@@ -115,7 +114,7 @@ export default async function ProjectPage({
             {project.lighthouse && (
               <div className="space-y-4 mb-10">
                 <h3 className="text-[12px] md:text-[13px] font-mono text-cyan-500 uppercase tracking-[0.3em] flex items-center gap-2">
-                  System_Performance_Audit
+                  Recorded Performance Audit
                 </h3>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -155,7 +154,7 @@ export default async function ProjectPage({
             {project.techStack && (
               <div className="space-y-4">
                 <h3 className="text-[12px] md:text-[13px] font-mono text-cyan-500 uppercase tracking-widest">
-                  Stack_Initialization
+                  Tech Stack Used
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {project.techStack.map((t: string) => (
