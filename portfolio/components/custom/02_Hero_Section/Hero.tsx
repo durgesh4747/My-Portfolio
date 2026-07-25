@@ -104,17 +104,14 @@ export default function Hero() {
         {/* LEFT */}
 
         <div className="lg:col-span-7 text-center lg:text-left">
-          <h1 className="md:animate-hero-fade text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
             I Build Websites that{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
               Turn Visitors Into Clients
             </span>
           </h1>
 
-          <h2
-            style={{ animationDelay: "0.2s" }}
-            className="animate-hero-fade max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
-          >
+          <h2 className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0">
             I help UK trade and service businesses — solar installers,
             electricians, contractors — fix slow, outdated websites and turn
             them into fast, reliable ones that convert visitors into real

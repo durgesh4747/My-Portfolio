@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
 
   experimental: {
     optimizeCss: true,
+    optimizePackageImports: [
+      "lucide-react",
+      "react-icons",
+      "framer-motion",
+      "radix-ui",
+      "sonner",
+      "@sanity/icons",
+    ],
   },
 
   compiler: {
