@@ -55,18 +55,6 @@ export default function Hero() {
     history.pushState(null, "", `#${id}`);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-
-    visible: {
-      opacity: 1,
-
-      transition: {
-        staggerChildren: 0.12,
-      },
-    },
-  };
-
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
 
@@ -95,12 +83,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zz48cGF0aCBkPSJNMTAgMTBoMjB2MjBIMTB6IiBmaWxsPSIjMWUyOTNiIiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')] opacity-20" />
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
-      >
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
         {/* LEFT */}
 
         <div className="lg:col-span-7 text-center lg:text-left">
@@ -111,13 +94,13 @@ export default function Hero() {
             </span>
           </h1>
 
-          <h2 className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0">
+          <p className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0">
             I help UK trade and service businesses — solar installers,
             electricians, contractors — fix slow, outdated websites and turn
             them into fast, reliable ones that convert visitors into real
             inquiries. No jargon, no disruption to how you already manage
             things.
-          </h2>
+          </p>
 
           {/* Large buttons for desktop's and tabs only */}
           <motion.div
@@ -241,7 +224,7 @@ export default function Hero() {
             Get in Touch
           </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
