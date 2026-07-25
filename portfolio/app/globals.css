@@ -43,6 +43,19 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-hero-fade: heroFade 0.8s ease-out forwards;
+
+  @keyframes heroFade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 :root {
@@ -86,7 +99,7 @@
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
+  --popover-foreground: oklch(0.205 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
@@ -114,21 +127,7 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@theme inline {
-  --animate-hero-fade: heroFade 0.8s ease-out forwards;
-
-  @keyframes heroFade {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
+/* UTILITY ANIMATIONS */
 .animate-hero-fade {
   animation: heroFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
@@ -137,21 +136,15 @@
 
 .marquee {
   overflow: hidden;
-
   width: 100%;
 }
 
 .marquee-track {
   display: flex;
-
   width: max-content;
-
   gap: 4rem;
-
   animation: scroll 60s linear infinite;
-
   will-change: transform;
-
   transform: translate3d(0, 0, 0);
 }
 
@@ -165,49 +158,35 @@
   from {
     transform: translate3d(0, 0, 0);
   }
-
   to {
     transform: translate3d(-50%, 0, 0);
   }
 }
 
-/* AMBIENT GLOW */
-
+/* AMBIENT GLOW - Optimized for Mobile GPUs */
 .ambient-glow {
   position: absolute;
-
   border-radius: 9999px;
-
-  filter: blur(120px);
-
+  filter: blur(100px);
   opacity: 0.25;
-
   animation: floatAmbient 20s ease-in-out infinite;
+  will-change: transform;
 }
 
 .ambient-glow.cyan {
   top: -10%;
-
   left: -10%;
-
   width: 50vw;
-
   height: 50vw;
-
   background: #0891b233;
 }
 
 .ambient-glow.blue {
   bottom: -10%;
-
   right: -10%;
-
   width: 60vw;
-
   height: 60vw;
-
   background: #2563eb33;
-
   animation-duration: 24s;
 }
 
@@ -216,133 +195,54 @@
   100% {
     transform: translate3d(0, 0, 0) scale(1);
   }
-
   50% {
     transform: translate3d(0, -30px, 0) scale(1.05);
   }
 }
 
-/* WORKFLOW */
+/* Reduce GPU - load on small mobile viewports */
+@media (max-width: 768px) {
+  .ambient-glow {
+    filter: blur(40px);
+    opacity: 0.15;
+  }
+}
 
+/* WORKFLOW */
 .workflow-line {
   position: absolute;
-
   left: 10%;
-
   right: 10%;
-
   height: 2px;
-
   background: #1e293b;
-
   border-radius: 9999px;
-
   overflow: hidden;
-
   z-index: 0;
 }
 
-/* MOVING PACKET */
-
 .workflow-packet {
   width: 30%;
-
   height: 100%;
-
   background: linear-gradient(90deg, transparent, #60a5fa, transparent);
-
   animation: workflowMove 2.8s linear infinite;
-
   will-change: transform;
-
   transform: translate3d(0, 0, 0);
 }
-
-/* GPU animation */
 
 @keyframes workflowMove {
   from {
     transform: translate3d(-120%, 0, 0);
   }
-
   to {
     transform: translate3d(320%, 0, 0);
   }
 }
 
-/* Low power devices */
-
+/* REDUCED MOTION SUPPORT FOR LOW POWER */
 @media (prefers-reduced-motion: reduce) {
-  .workflow-packet {
+  .workflow-packet,
+  .ambient-glow,
+  .marquee-track {
     animation: none;
   }
 }
-
-/* Moved to separate css file for services */
-/* @media (max-width: 768px) {
-  .ambient-glow,
-  .aurora-orb {
-    filter: blur(60px);
-    opacity: 0.15;
-  }
-} */
-
-/* 
-.aurora-orb {
-  position: absolute;
-
-  border-radius: 9999px;
-
-  filter: blur(130px);
-
-  opacity: 0.2;
-
-  animation: auroraFloat 26s ease-in-out infinite;
-
-  will-change: transform;
-
-  transform: translate3d(0, 0, 0);
-} */
-
-/* .aurora-orb.cyan {
-  top: -10%;
-
-  left: -10%;
-
-  width: 70vw;
-
-  height: 70vw;
-
-  background: #0891b222;
-} */
-
-/* .aurora-orb.blue {
-  bottom: -10%;
-
-  right: -10%;
-
-  width: 60vw;
-
-  height: 60vw;
-
-  background: #1d4ed822;
-
-  animation-duration: 32s;
-} */
-
-/* @keyframes auroraFloat {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(40px, -30px, 0) scale(1.05);
-  }
-} */
-
-/* @media (prefers-reduced-motion: reduce) {
-  .aurora-orb {
-    animation: none;
-  }
-} */

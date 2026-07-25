@@ -55,6 +55,18 @@ export default function Hero() {
     history.pushState(null, "", `#${id}`);
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+
+    visible: {
+      opacity: 1,
+
+      transition: {
+        staggerChildren: 0.12,
+      },
+    },
+  };
+
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
 
@@ -74,7 +86,7 @@ export default function Hero() {
       id="home"
       className="relative min-h-dvh w-full flex items-center justify-center bg-[#020617] overflow-hidden pt-24 pb-12 px-4 sm:px-6"
     >
-      {/*  Ambient bg  */}
+      {/* Ambient bg */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="ambient-glow cyan" />
 
@@ -83,24 +95,35 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zz48cGF0aCBkPSJNMTAgMTBoMjB2MjBIMTB6IiBmaWxsPSIjMWUyOTNiIiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')] opacity-20" />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center"
+      >
         {/* LEFT */}
 
         <div className="lg:col-span-7 text-center lg:text-left">
-          <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6">
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.15] mb-6"
+          >
             I Build Websites that{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-500">
               Turn Visitors Into Clients
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0">
+          <motion.p
+            variants={itemVariants}
+            className="max-w-xl text-slate-400 text-lg leading-relaxed mb-10 mx-auto lg:mx-0"
+          >
             I help UK trade and service businesses — solar installers,
             electricians, contractors — fix slow, outdated websites and turn
             them into fast, reliable ones that convert visitors into real
             inquiries. No jargon, no disruption to how you already manage
             things.
-          </p>
+          </motion.p>
 
           {/* Large buttons for desktop's and tabs only */}
           <motion.div
@@ -114,7 +137,6 @@ export default function Hero() {
                hover:bg-cyan-400 active:scale-95 transition-all flex items-center justify-center gap-3 
                shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]"
             >
-              {/* <FiTerminal className="text-lg" /> */}
               View Case Studies
             </a>
 
@@ -195,6 +217,7 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
+
         {/* Buttons only for mobile devices */}
         <motion.div
           variants={itemVariants}
@@ -224,7 +247,7 @@ export default function Hero() {
             Get in Touch
           </a>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
